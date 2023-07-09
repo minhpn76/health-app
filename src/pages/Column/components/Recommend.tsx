@@ -1,9 +1,10 @@
 import {Box, Grid, Typography, styled} from '@mui/material';
 
 const SCRecommendItem = styled(Box)(({theme}) => ({
-  backgroundColor: theme.palette.dark?.[500],
+  backgroundColor: theme.palette.dark?.[600],
   display: 'flex',
   flexDirection: 'column',
+  alignItems: 'center',
   textAlign: 'center',
   padding: theme.spacing(3),
   minHeight: 144,
@@ -11,6 +12,13 @@ const SCRecommendItem = styled(Box)(({theme}) => ({
     color: theme.palette.primary[300],
   },
   color: theme.palette.light?.main,
+  gap: theme.spacing(2),
+}));
+
+const SCLine = styled(Box)(({theme}) => ({
+  width: theme.spacing(7),
+  height: 2,
+  backgroundColor: theme.palette.light?.main,
 }));
 
 const recommendItems = [
@@ -39,7 +47,7 @@ const Recommend = () => {
         <Grid item xs={3} key={idx}>
           <SCRecommendItem>
             <Typography variant="h5">{recommend.title}</Typography>
-            -------
+            <SCLine />
             <Typography variant="p">{recommend.description}</Typography>
           </SCRecommendItem>
         </Grid>

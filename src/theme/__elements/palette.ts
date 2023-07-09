@@ -3,8 +3,8 @@ import * as colors from './colors';
 
 export default {
   primary: {
+    main: colors.primary400,
     [300]: colors.primary300,
-    [400]: colors.primary400,
     [500]: colors.primary500,
   },
   secondary: {

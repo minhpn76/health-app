@@ -51,7 +51,6 @@ declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
     default: true;
     pressed: true;
-    ghost: true;
   }
 }
 
@@ -67,8 +66,5 @@ declare module '@mui/material/IconButton' {
   interface IconButtonPropsColorOverrides {
     default: true;
     pressed: true;
-    ghost: true;
-    transparent: true;
-    slate: true;
   }
 }
