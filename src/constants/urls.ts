@@ -1,2 +1,3 @@
 export const HOME = '/';
-export const RECORDS = '/records';
+export const MY_RECORD = '/my-record';
+export const COLUMN = '/column';

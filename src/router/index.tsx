@@ -6,6 +6,8 @@ import AppLayout from '../layouts/AppLayout';
 
 // eslint-disable-next-line react-refresh/only-export-components
 const Home = React.lazy(() => import('../pages/Home'));
+const MyRecord = React.lazy(() => import('../pages/MyRecord'));
+const Column = React.lazy(() => import('../pages/Column'));
 
 const lazyLoad = (children: React.ReactNode) => {
   return (
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
       {
         index: true,
         element: lazyLoad(<Home />),
+      },
+      {
+        path: urls.MY_RECORD,
+        element: lazyLoad(<MyRecord />),
+      },
+      {
+        path: urls.COLUMN,
+        element: lazyLoad(<Column />),
       },
     ],
   },

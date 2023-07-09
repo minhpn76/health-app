@@ -1,9 +1,11 @@
 import * as colors from './colors';
 
-export const fontFamily = 'Inter-Regular';
+export const fontFamily = {
+  inter: 'Inter',
+};
 
 export const typographyConfiguration = {
-  fontFamily,
+  fontFamily: fontFamily.inter,
   fontWeightRegular: 400,
   fontWeightBold: 700,
   fontWeightMedium: 500,
@@ -33,28 +35,28 @@ export const typographyConfiguration = {
     lineHeight: '32px',
   },
   h5: {
+    fontSize: 22,
+    lineHeight: '30px',
+  },
+  body: {
     fontSize: 20,
     lineHeight: '28px',
   },
-  body: {
-    fontSize: 16,
-    lineHeight: '24px',
-  },
   p: {
-    fontSize: 16,
+    fontSize: 18,
     lineHeight: '24px',
   },
   label: {
-    fontSize: 14,
+    fontSize: 16,
     lineHeight: '24px',
   },
   small: {
-    fontSize: 12,
+    fontSize: 14,
     lineHeight: '16px',
   },
   tiny: {
-    fontSize: 10,
-    lineHeight: '12px',
+    fontSize: 12,
+    lineHeight: '10px',
   },
 };
 
