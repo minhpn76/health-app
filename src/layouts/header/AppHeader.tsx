@@ -2,18 +2,16 @@ import {
   Box,
   Container,
   IconButton,
-  List,
-  ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  MenuItem,
-  MenuList,
   styled,
 } from '@mui/material';
+
 import MemoIcon from 'src/icons/Memo';
 import ChallengeIcon from 'src/icons/Challenge';
 import InfoIcon from 'src/icons/Info';
+import MenuIcon from 'src/icons/Menu';
 
 const SCAppHeader = styled(Box)(({theme}) => ({
   display: 'flex',
@@ -22,10 +20,21 @@ const SCAppHeader = styled(Box)(({theme}) => ({
   backgroundColor: theme.palette.dark?.[500],
 }));
 
+const SCMenu = styled(Box)(({theme}) => ({
+  display: 'flex',
+  alignItems: 'center',
+  '& span': {
+    color: theme.palette.light?.main,
+  },
+  '& .MuiSvgIcon-root': {
+    color: theme.palette.primary?.main,
+  },
+}));
+
 const menus = [
-  {icon: <MemoIcon />, label: '自分の記録'},
-  {icon: <ChallengeIcon />, label: 'チャレンジ'},
-  {icon: <InfoIcon />, label: 'お知らせ'},
+  {icon: <MemoIcon viewBox="0 0 32 32" />, label: '自分の記録'},
+  {icon: <ChallengeIcon viewBox="0 0 32 32" />, label: 'チャレンジ'},
+  {icon: <InfoIcon viewBox="0 0 32 32" />, label: 'お知らせ'},
 ];
 
 const AppHeader = () => {
@@ -41,17 +50,22 @@ const AppHeader = () => {
           <Box component="div">
             <Box component="img" src="/logo.svg" alt="logo" />
           </Box>
-          <Box component="div">
+          <SCMenu>
             {menus.map((menu, idx) => (
               <ListItemButton key={idx}>
-                <ListItemIcon sx={{color: 'inherit'}}>{menu.icon}</ListItemIcon>
+                <ListItemIcon>{menu.icon}</ListItemIcon>
                 <ListItemText
                   primary={menu.label}
                   primaryTypographyProps={{fontSize: 14, fontWeight: 'medium'}}
                 />
               </ListItemButton>
             ))}
-          </Box>
+            <Box component="div">
+              <IconButton>
+                <MenuIcon viewBox="0 0 32 32" />
+              </IconButton>
+            </Box>
+          </SCMenu>
         </Box>
       </Container>
     </SCAppHeader>

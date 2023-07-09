@@ -7,7 +7,7 @@ const SCAppFooter = styled(Box)(({theme}) => ({
   padding: '50px 0',
   '& p': {
     color: theme.palette.light?.main,
-    fontFamily: 'NotoSansJP-Regular',
+    fontFamily: theme.typography.fontFamily,
   },
 }));
 

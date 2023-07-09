@@ -1,11 +1,12 @@
 import * as colors from './colors';
 
 export const fontFamily = {
-  inter: 'Inter',
+  Inter: 'Inter',
+  NotoSanJP: 'Noto Sans JP',
 };
 
 export const typographyConfiguration = {
-  fontFamily: fontFamily.inter,
+  fontFamily: fontFamily.Inter,
   fontWeightRegular: 400,
   fontWeightBold: 700,
   fontWeightMedium: 500,

@@ -14,7 +14,7 @@ const defaultSettings: {
 } = {
   styleOverrides: theme => ({
     '@fontFace': {
-      fontFamily: fontFamily.inter,
+      fontFamily: fontFamily.Inter,
     },
     body: {
       fontSize: 14,
