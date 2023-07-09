@@ -8,7 +8,7 @@ export default {
     [500]: colors.primary500,
   },
   secondary: {
-    [300]: colors.secondary300,
+    main: colors.secondary300,
   },
   dark: {
     [500]: colors.dark500,

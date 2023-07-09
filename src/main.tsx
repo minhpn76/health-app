@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import setupHttpClient from './api/setupHttpClient';
+import ThemeProvider from './theme/ThemeProvider';
 import './index.css';
 
 //enabled mock service
@@ -22,6 +23,8 @@ setupHttpClient();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 );

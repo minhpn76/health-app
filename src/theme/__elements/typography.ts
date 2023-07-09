@@ -1,6 +1,6 @@
 import * as colors from './colors';
 
-export const fontFamily = 'Lato';
+export const fontFamily = 'Inter-Regular';
 
 export const typographyConfiguration = {
   fontFamily,

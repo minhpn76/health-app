@@ -1,4 +1,4 @@
-export const light = '##FFFFFF';
+export const light = '#FFFFFF';
 
 export const primary300 = '#FFCC21';
 export const primary400 = '#FF963C';

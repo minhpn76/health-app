@@ -14,7 +14,7 @@ const theme = createTheme({
   shadows,
   components: {
     MuiCssBaseline: cssBaseLine,
-    MuiTypography: typographyDefaultSettings,
+    // MuiTypography: typographyDefaultSettings,
   },
 });
 

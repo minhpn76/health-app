@@ -1,69 +1,103 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+/* notosans */
+@font-face {
+  font-family: 'NotoSansJP-Regular';
+  src: local('NotoSansJP-Regular'),
+    url('./assets/fonts/notosansjp/NotoSansJP-Regular.ttf') format('ttf');
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+@font-face {
+  font-family: 'NotoSansJP-Black';
+  src: local('NotoSansJP-Black'),
+    url('./assets/fonts/notosansjp/NotoSansJP-Black.ttf') format('ttf');
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+@font-face {
+  font-family: 'NotoSansJP-Bold';
+  src: local('NotoSansJP-Bold'),
+    url('./assets/fonts/notosansjp/NotoSansJP-ExtraBold.ttf') format('ttf');
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+@font-face {
+  font-family: 'NotoSansJP-ExtraLight';
+  src: local('NotoSansJP-ExtraLight'),
+    url('./assets/fonts/notosansjp/NotoSansJP-ExtraLight.ttf') format('ttf');
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+@font-face {
+  font-family: 'NotoSansJP-Light';
+  src: local('NotoSansJP-Light'),
+    url('./assets/fonts/notosansjp/NotoSansJP-Light.ttf') format('ttf');
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+@font-face {
+  font-family: 'NotoSansJP-Medium';
+  src: local('NotNotoSansJP-Medium'),
+    url('./assets/fonts/notosansjp/NotoSansJP-Medium.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'NotoSansJP-SemiBold';
+  src: local('NotoSansJP-SemiBold'),
+    url('./assets/fonts/notosansjp/NotoSansJP-SemiBold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'NotoSansJP-Thin';
+  src: local('NotoSansJP-Thin'),
+    url('./assets/fonts/notosansjp/NotoSansJP-Thin.ttf') format('ttf');
+}
+
+/* inter */
+@font-face {
+  font-family: 'Inter-Black';
+  src: local('Inter-Black'),
+    url('./assets/fonts/inter/Inter-Black.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Inter-Bold';
+  src: local('Inter-Bold'),
+    url('./assets/fonts/inter/Inter-Bold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Inter-ExtraBold';
+  src: local('Inter-ExtraBold'),
+    url('./assets/fonts/inter/Inter-ExtraBold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Inter-ExtraLight';
+  src: local('Inter-ExtraLight'),
+    url('./assets/fonts/inter/Inter-ExtraLight.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Inter-Light';
+  src: local('Inter-Light'),
+    url('./assets/fonts/inter/Inter-Light.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Inter-Medium';
+  src: local('Inter-Medium'),
+    url('./assets/fonts/inter/Inter-Medium.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Inter-Regular';
+  src: local('Inter-Regular'),
+    url('./assets/fonts/inter/Inter-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Inter-SemiBold';
+  src: local('Inter-SemiBold'),
+    url('./assets/fonts/inter/Inter-SemiBold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Inter-Thin';
+  src: local('Inter-Thin'),
+    url('./assets/fonts/inter/Inter-Thin.ttf') format('ttf');
 }
