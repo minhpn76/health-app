@@ -7,11 +7,14 @@ import {
   ListItemText,
   styled,
 } from '@mui/material';
+import {Link} from 'react-router-dom';
 
 import MemoIcon from 'src/icons/Memo';
 import ChallengeIcon from 'src/icons/Challenge';
 import InfoIcon from 'src/icons/Info';
 import MenuIcon from 'src/icons/Menu';
+
+import * as urls from 'src/constants/urls';
 
 const SCAppHeader = styled(Box)(({theme}) => ({
   display: 'flex',
@@ -32,9 +35,9 @@ const SCMenu = styled(Box)(({theme}) => ({
 }));
 
 const menus = [
-  {icon: <MemoIcon viewBox="0 0 32 32" />, label: '自分の記録'},
-  {icon: <ChallengeIcon viewBox="0 0 32 32" />, label: 'チャレンジ'},
-  {icon: <InfoIcon viewBox="0 0 32 32" />, label: 'お知らせ'},
+  {icon: <MemoIcon viewBox="0 0 32 32" />, label: '自分の記録', link: '/test'},
+  {icon: <ChallengeIcon viewBox="0 0 32 32" />, label: 'チャレンジ', link: '/'},
+  {icon: <InfoIcon viewBox="0 0 32 32" />, label: 'お知らせ', link: '/'},
 ];
 
 const AppHeader = () => {
@@ -48,7 +51,9 @@ const AppHeader = () => {
           justifyContent="space-between"
         >
           <Box component="div">
-            <Box component="img" src="/logo.svg" alt="logo" />
+            <Link to={urls.HOME}>
+              <Box component="img" src="/logo.svg" alt="logo" />
+            </Link>
           </Box>
           <SCMenu>
             {menus.map((menu, idx) => (
@@ -56,7 +61,10 @@ const AppHeader = () => {
                 <ListItemIcon>{menu.icon}</ListItemIcon>
                 <ListItemText
                   primary={menu.label}
-                  primaryTypographyProps={{fontSize: 14, fontWeight: 'medium'}}
+                  primaryTypographyProps={{
+                    fontSize: 14,
+                    fontWeight: 'medium',
+                  }}
                 />
               </ListItemButton>
             ))}

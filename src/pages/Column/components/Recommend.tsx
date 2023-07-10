@@ -1,6 +1,6 @@
 import {Box, Grid, Typography, styled} from '@mui/material';
 
-const SCRecommendItem = styled(Box)(({theme}) => ({
+const StyledRecommendItem = styled(Box)(({theme}) => ({
   backgroundColor: theme.palette.dark?.[600],
   display: 'flex',
   flexDirection: 'column',
@@ -45,11 +45,11 @@ const Recommend = () => {
     <Grid container spacing={4}>
       {recommendItems.map((recommend, idx) => (
         <Grid item xs={3} key={idx}>
-          <SCRecommendItem>
+          <StyledRecommendItem>
             <Typography variant="h5">{recommend.title}</Typography>
             <SCLine />
             <Typography variant="p">{recommend.description}</Typography>
-          </SCRecommendItem>
+          </StyledRecommendItem>
         </Grid>
       ))}
     </Grid>

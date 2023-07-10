@@ -52,8 +52,8 @@ export const typographyConfiguration = {
     lineHeight: '24px',
   },
   small: {
-    fontSize: 14,
-    lineHeight: '16px',
+    fontSize: 15,
+    lineHeight: '17px',
   },
   tiny: {
     fontSize: 12,
