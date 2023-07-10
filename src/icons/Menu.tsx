@@ -2,9 +2,9 @@ import {SvgIcon, SvgIconProps} from '@mui/material';
 
 const Menu = (props: SvgIconProps) => (
   <SvgIcon {...props}>
-    <path d="M3 8H29" stroke="#FF963C" stroke-width="3" />
-    <path d="M3 16H29" stroke="#FF963C" stroke-width="3" />
-    <path d="M3 24H29" stroke="#FF963C" stroke-width="3" />
+    <path d="M3 8H29" stroke="#FF963C" strokewidth="3" />
+    <path d="M3 16H29" stroke="#FF963C" strokewidth="3" />
+    <path d="M3 24H29" stroke="#FF963C" strokewidth="3" />
   </SvgIcon>
 );
 

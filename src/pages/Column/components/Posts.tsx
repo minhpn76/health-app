@@ -1,10 +1,9 @@
 import {Box, Grid, Typography, styled} from '@mui/material';
 import Picture from 'src/components/Picture';
-import theme from 'src/theme/theme';
 
-const StyledWrapperPost = styled(Box)({
+const StyledWrapperPost = styled(Box)(({theme}) => ({
   marginBottom: theme.spacing(1),
-});
+}));
 
 const StyledTypography = styled(Typography)({
   overflow: 'hidden',

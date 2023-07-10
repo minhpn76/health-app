@@ -48,7 +48,9 @@ const AppFooter = () => {
     <SCAppFooter>
       <SCFooterContainer maxWidth="lg">
         {footerItems.map((footer, idx) => (
-          <Typography key={idx}>{footer.text}</Typography>
+          <Typography variant="tiny" key={idx}>
+            {footer.text}
+          </Typography>
         ))}
       </SCFooterContainer>
     </SCAppFooter>

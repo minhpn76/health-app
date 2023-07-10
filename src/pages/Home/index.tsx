@@ -1,5 +1,7 @@
+import MealHistory from './components/MealHistory';
+
 const Home = () => {
-  return ( <>Home</>  );
-}
- 
+  return <MealHistory />;
+};
+
 export default Home;
