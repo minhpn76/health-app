@@ -4,3 +4,8 @@ export type ApiToken = {
   refreshToken?: string;
   expiryAt?: number;
 };
+
+export type LoginPayload = {
+  username: string;
+  password: string;
+};

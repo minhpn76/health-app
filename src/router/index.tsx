@@ -5,10 +5,10 @@ import * as urls from '../constants/urls';
 import AppLayout from '../layouts/AppLayout';
 
 // eslint-disable-next-line react-refresh/only-export-components
-const Home = React.lazy(() => import('../pages/Home'));
-const MyRecord = React.lazy(() => import('../pages/MyRecord'));
-const Column = React.lazy(() => import('../pages/Column'));
-const Login = React.lazy(() => import('../pages/Login'));
+const Home = React.lazy(() => import('../pages/home/HomePage'));
+const MyRecord = React.lazy(() => import('../pages/my-record/MyRecordPage'));
+const Column = React.lazy(() => import('../pages/column/ColumnPage'));
+const Login = React.lazy(() => import('../pages/login/LoginPage'));
 
 const lazyLoad = (children: React.ReactNode) => {
   return (

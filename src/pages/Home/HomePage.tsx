@@ -2,7 +2,7 @@ import {Box} from '@mui/material';
 import MealFilter from './components/MealFilter';
 import MealHistory from './components/MealHistory';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       <Box my={3}>
@@ -13,4 +13,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

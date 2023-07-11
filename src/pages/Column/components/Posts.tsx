@@ -1,6 +1,6 @@
 import {Box, Grid, Typography, styled} from '@mui/material';
-import ButtonLoadMore from 'src/components/ButtonLoadMore';
-import Picture from 'src/components/Picture';
+import ButtonLoadMore from 'src/components/button-load-more/ButtonLoadMore';
+import Picture from 'src/components/picture/Picture';
 
 const StyledWrapperPost = styled(Box)(({theme}) => ({
   marginBottom: theme.spacing(1),

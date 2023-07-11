@@ -2,7 +2,7 @@ import {Box} from '@mui/material';
 import Dairy from './components/Dairy';
 import Entries from './components/Entries';
 
-const MyRecord = () => {
+const MyRecordPage = () => {
   return (
     <>
       <Entries />
@@ -13,4 +13,4 @@ const MyRecord = () => {
   );
 };
 
-export default MyRecord;
+export default MyRecordPage;

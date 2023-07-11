@@ -1,5 +1,5 @@
 import {Box, Grid, Typography, styled} from '@mui/material';
-import ButtonLoadMore from 'src/components/ButtonLoadMore';
+import ButtonLoadMore from 'src/components/button-load-more/ButtonLoadMore';
 
 const StyledDairy = styled(Box)(({theme}) => ({
   border: '1px solid',

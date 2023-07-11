@@ -2,7 +2,7 @@ import {Box} from '@mui/material';
 import Recommend from './components/Recommend';
 import Posts from './components/Posts';
 
-const Column = () => {
+const ColumnPage = () => {
   return (
     <>
       <Recommend />
@@ -13,4 +13,4 @@ const Column = () => {
   );
 };
 
-export default Column;
+export default ColumnPage;
