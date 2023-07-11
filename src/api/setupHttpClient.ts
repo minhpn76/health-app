@@ -4,16 +4,16 @@ import axios, {
   InternalAxiosRequestConfig,
 } from 'axios';
 import queryString from 'query-string';
-import authApiClient from './clients/authApiClient';
+import {authApiClient} from './clients/authApiClient';
 import {API_PATH} from '../constants/common';
 
 const setupHttpClientInterceptors = () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   axios.defaults.baseURL = API_PATH;
-  const onRequest = (config: InternalAxiosRequestConfig) => {
-    // const token = await authApiClient.login();
+  const onRequest = async (config: InternalAxiosRequestConfig) => {
+    const token = await authApiClient.getToken();
 
-    // config.headers.Authorization = `Bearer ${1}`;
+    config.headers.Authorization = `Bearer ${token?.accessToken}`;
 
     config.paramsSerializer = {
       serialize: p => queryString.stringify(p, {arrayFormat: 'index'}),

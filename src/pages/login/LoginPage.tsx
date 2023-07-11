@@ -1,6 +1,6 @@
 import {Container, Box} from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
-import {useNavigate} from 'react-router-dom';
+import {Navigate} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -9,7 +9,7 @@ import {LoginValues} from 'src/@types/view-models/auth';
 import FormTextField from 'src/components/form-control/FormTextField';
 import {useLogin} from 'src/hooks/auth/useAuthMutation';
 import ErrorSlate from 'src/components/error-slate/ErrorSlate';
-
+import {hasToken} from 'src/utils/common';
 import * as urls from 'src/constants/urls';
 
 const loginFormSchema = yup.object({
@@ -18,7 +18,6 @@ const loginFormSchema = yup.object({
 });
 
 const LoginPage = () => {
-  const navigate = useNavigate();
   const {
     control,
     handleSubmit,
@@ -34,10 +33,12 @@ const LoginPage = () => {
   const {mutateAsync: login, error: loginError, isLoading} = useLogin();
 
   const onSubmit = async (data: LoginValues) => {
-    await login(data).then(() => {
-      navigate(urls.HOME);
-    });
+    await login(data);
   };
+
+  if (hasToken()) {
+    return <Navigate to={urls.HOME} replace={true} />;
+  }
 
   return (
     <Container component="main" maxWidth="xs">

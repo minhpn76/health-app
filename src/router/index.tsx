@@ -2,7 +2,7 @@ import React, {Suspense} from 'react';
 import {createBrowserRouter} from 'react-router-dom';
 
 import * as urls from '../constants/urls';
-import AppLayout from '../layouts/AppLayout';
+import AppLayout from '../layouts/app-layout/AppLayout';
 
 // eslint-disable-next-line react-refresh/only-export-components
 const Home = React.lazy(() => import('../pages/home/HomePage'));
@@ -32,8 +32,14 @@ const router = createBrowserRouter([
         path: urls.MY_RECORD,
         element: lazyLoad(<MyRecord />),
       },
+    ],
+  },
+  {
+    path: urls.COLUMN,
+    element: <AppLayout />,
+    children: [
       {
-        path: urls.COLUMN,
+        index: true,
         element: lazyLoad(<Column />),
       },
     ],

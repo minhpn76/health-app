@@ -20,6 +20,7 @@ const generateToken = () => {
 
 export const validateToken = (req: any) => {
   let accessToken = req.headers.get('Authorization');
+  console.log('accessToken', accessToken);
   if (accessToken) {
     accessToken = accessToken.substring(7);
     const tokenStr = localStorage.getItem(LOCAL_STORAGE_KEY.KEY_TOKEN);
@@ -98,6 +99,22 @@ export const authHandler = [
       ctx.status(401),
       ctx.json({
         message: 'Unauthorized request',
+      })
+    );
+  }),
+
+  rest.get(`${API_PATH}/user/me`, (req, res, ctx) => {
+    if (validateToken(req)) {
+      const users = JSON.parse(
+        localStorage.getItem(LOCAL_STORAGE_KEY.KEY_USERS) || '[]'
+      );
+      return res(ctx.status(200), ctx.json(users[0]));
+    }
+    // If not authenticated, respond with a 401 error
+    return res(
+      ctx.status(401),
+      ctx.json({
+        message: 'Not authorized',
       })
     );
   }),

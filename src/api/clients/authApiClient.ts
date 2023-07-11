@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import axios from 'axios';
-import {ApiToken} from 'src/@types/models/auth';
+import {ApiToken, UserEntity} from 'src/@types/models/auth';
 import {API_PATH, LOCAL_STORAGE_KEY} from 'src/constants/common';
 
-const authApiClient = () => {
-  const login = async (username: string, password: string) => {
+export namespace authApiClient {
+  export const login = async (username: string, password: string) => {
     const form = new URLSearchParams();
     form.append('username', username);
     form.append('password', password);
@@ -15,13 +14,13 @@ const authApiClient = () => {
     );
     return response.data;
   };
-
   const acquireToken = async () => {
     let token: ApiToken;
     try {
       token = JSON.parse(
         localStorage.getItem(LOCAL_STORAGE_KEY.TOKEN_PAYLOAD) || '{}'
       );
+      console.log('token', token);
       if (token.expiryAt && token.accessToken && token.refreshToken) {
         // minus 20 seconds for network latency
         if (new Date(token.expiryAt - 20 * 1000) > new Date()) {
@@ -61,15 +60,16 @@ const authApiClient = () => {
     }
   };
 
-  const checkToken = async () => {
+  export const checkToken = async () => {
     const token = await acquireToken();
     if (!token) throw new Error('Not authenticated');
   };
 
-  return {
-    login,
-    checkToken,
+  export const getCurrentUser = () => {
+    return axios
+      .get<UserEntity>(`${API_PATH}/user/me`)
+      .then(response => response.data);
   };
-};
 
-export default authApiClient;
+  export const getToken = acquireToken;
+}
