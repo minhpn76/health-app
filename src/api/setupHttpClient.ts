@@ -6,12 +6,23 @@ import axios, {
 import queryString from 'query-string';
 import {authApiClient} from './clients/authApiClient';
 import {API_PATH} from '../constants/common';
+import {loginRedirect} from 'src/utils/common';
 
 const setupHttpClientInterceptors = () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   axios.defaults.baseURL = API_PATH;
   const onRequest = async (config: InternalAxiosRequestConfig) => {
+    const abortController = new AbortController();
     const token = await authApiClient.getToken();
+    if (!token) {
+      const abortConfig = {
+        ...config,
+        signal: abortController.signal,
+      };
+      abortController.abort();
+      loginRedirect();
+      return abortConfig;
+    }
 
     config.headers.Authorization = `Bearer ${token?.accessToken}`;
 

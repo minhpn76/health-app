@@ -20,7 +20,6 @@ export namespace authApiClient {
       token = JSON.parse(
         localStorage.getItem(LOCAL_STORAGE_KEY.TOKEN_PAYLOAD) || '{}'
       );
-      console.log('token', token);
       if (token.expiryAt && token.accessToken && token.refreshToken) {
         // minus 20 seconds for network latency
         if (new Date(token.expiryAt - 20 * 1000) > new Date()) {

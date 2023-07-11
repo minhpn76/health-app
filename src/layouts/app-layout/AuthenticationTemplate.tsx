@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import {UserEntity} from 'src/@types/models/auth';
 import {authApiClient} from 'src/api/clients/authApiClient';
 import * as urls from 'src/constants/urls';
+import {loginRedirect} from 'src/utils/common';
 
 type AuthenticationTemplateProps = {
   isAnonymous?: boolean;
@@ -54,8 +55,9 @@ const AuthenticatedTemplate = ({
       })
       .catch(() => {
         setIsLoading(false);
+        loginRedirect(navigate);
       });
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     if (userData) {

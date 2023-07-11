@@ -20,7 +20,6 @@ const generateToken = () => {
 
 export const validateToken = (req: any) => {
   let accessToken = req.headers.get('Authorization');
-  console.log('accessToken', accessToken);
   if (accessToken) {
     accessToken = accessToken.substring(7);
     const tokenStr = localStorage.getItem(LOCAL_STORAGE_KEY.KEY_TOKEN);
