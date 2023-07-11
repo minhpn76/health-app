@@ -3,6 +3,7 @@ export const LOCAL_STORAGE_KEY = {
   //mock
   KEY_TOKEN: '_mock_token',
   KEY_USERS: '_mock_users',
+  KEY_POSTS: '_mock_posts',
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

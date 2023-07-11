@@ -5,7 +5,7 @@ import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import {LoginValues} from 'src/@types/view-model/auth';
+import {LoginValues} from 'src/@types/view-models/auth';
 import FormTextField from 'src/components/form-control/FormTextField';
 import {useLogin} from 'src/hooks/auth/useAuthMutation';
 import ErrorSlate from 'src/components/error-slate/ErrorSlate';

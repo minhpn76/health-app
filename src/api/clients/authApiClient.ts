@@ -1,20 +1,19 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import axios from 'axios';
-import {ApiToken} from 'src/@types/model/auth';
+import {ApiToken} from 'src/@types/models/auth';
 import {API_PATH, LOCAL_STORAGE_KEY} from 'src/constants/common';
 
 const authApiClient = () => {
-  const login = (username: string, password: string) => {
+  const login = async (username: string, password: string) => {
     const form = new URLSearchParams();
     form.append('username', username);
     form.append('password', password);
-    return axios.post<ApiToken>(`${API_PATH}/auth/login`, form).then(resp => {
-      localStorage.setItem(
-        LOCAL_STORAGE_KEY.TOKEN_PAYLOAD,
-        JSON.stringify(resp.data)
-      );
-      return Promise.resolve(resp.data);
-    });
+    const response = await axios.post<ApiToken>(`${API_PATH}/auth/login`, form);
+    localStorage.setItem(
+      LOCAL_STORAGE_KEY.TOKEN_PAYLOAD,
+      JSON.stringify(response.data)
+    );
+    return response.data;
   };
 
   const acquireToken = async () => {

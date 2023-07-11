@@ -1,6 +1,12 @@
 import {Box, Grid, Typography, styled} from '@mui/material';
+import {Fragment} from 'react';
+import {DataLoading, NoResultsFound} from 'src/components';
 import ButtonLoadMore from 'src/components/button-load-more/ButtonLoadMore';
 import Picture from 'src/components/picture/Picture';
+import {usePostsQuery} from 'src/hooks/posts/usePostQueries';
+import {formatDate, formatTime} from 'src/utils/date';
+
+let pageNumber = 1;
 
 const StyledWrapperPost = styled(Box)(({theme}) => ({
   marginBottom: theme.spacing(1),
@@ -23,40 +29,86 @@ const StyledTags = styled(Typography)(({theme}) => ({
 }));
 
 const Posts = () => {
+  const {
+    data: posts,
+    isLoading,
+    isFetchingNextPage,
+    fetchNextPage,
+    hasNextPage,
+  } = usePostsQuery();
+
+  const handleLoadMore = async () => {
+    pageNumber += 1;
+    await fetchNextPage({pageParam: pageNumber});
+  };
+
   return (
-    <>
+    <DataLoading isLoading={isLoading || isFetchingNextPage}>
       <Grid container spacing={2}>
-        {Array(8)
-          .fill(null)
-          .map(i => (
-            <Grid item xs={3}>
-              <StyledWrapperPost>
-                <Picture
-                  link="/images/column-3.jpg"
-                  title="2021.05.17   23:25"
-                />
-                <StyledTypography mt={1} variant="small">
-                  魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ
-                </StyledTypography>
-                <StyledTags mt={1}>
-                  <Typography color="primary" variant="tiny">
-                    #魚料理
-                  </Typography>
-                  <Typography color="primary" variant="tiny">
-                    #和食
-                  </Typography>
-                  <Typography color="primary" variant="tiny">
-                    #DHA
-                  </Typography>
-                </StyledTags>
-              </StyledWrapperPost>
+        {posts && posts.pages.length > 0 ? (
+          <>
+            {posts.pages.map((group, idx) => (
+              <Fragment key={idx}>
+                {group.data.map(p => {
+                  let dateTimeText = '';
+                  if (p.createdOn) {
+                    dateTimeText += formatDate(
+                      new Date(p.createdOn).toLocaleString()
+                    );
+                    dateTimeText += ' ';
+                    dateTimeText += formatTime(
+                      new Date(p.createdOn).toLocaleString()
+                    );
+                  }
+                  return (
+                    <Grid item xs={3} key={p.id}>
+                      <StyledWrapperPost>
+                        <Picture link={p.image} title={dateTimeText} />
+                        <StyledTypography mt={1} variant="small">
+                          {p.title}
+                        </StyledTypography>
+                        {p.tags && p.tags.length > 0 && (
+                          <StyledTags mt={1}>
+                            {p.tags.map((t, idxTag) => (
+                              <Typography
+                                color="primary"
+                                variant="tiny"
+                                key={idxTag}
+                              >
+                                {`#${t}`}
+                              </Typography>
+                            ))}
+                          </StyledTags>
+                        )}
+                      </StyledWrapperPost>
+                    </Grid>
+                  );
+                })}
+              </Fragment>
+            ))}
+            <Grid item xs={12}>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                mt={4}
+              >
+                <ButtonLoadMore
+                  onClick={handleLoadMore}
+                  disabled={!hasNextPage}
+                >
+                  コラムをもっと見る
+                </ButtonLoadMore>
+              </Box>
             </Grid>
-          ))}
+          </>
+        ) : (
+          <Grid item xs={12}>
+            <NoResultsFound />
+          </Grid>
+        )}
       </Grid>
-      <Box display="flex" alignItems="center" justifyContent="center" mt={4}>
-        <ButtonLoadMore>コラムをもっと見る</ButtonLoadMore>
-      </Box>
-    </>
+    </DataLoading>
   );
 };
 

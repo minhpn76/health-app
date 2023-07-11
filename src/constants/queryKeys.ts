@@ -4,4 +4,5 @@ export const QUERY_KEYS = {
 
 export const QUERY_TOPICS = {
   MEAL: 'meal',
+  POSTS: 'posts',
 };

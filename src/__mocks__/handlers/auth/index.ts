@@ -41,6 +41,21 @@ export const validateToken = (req: any) => {
   return false;
 };
 
+export const authenticatedWrapper =
+  (callback: any) => (req: any, res: any, ctx: any) => {
+    if (validateToken(req)) {
+      return callback(req, res, ctx);
+    }
+
+    // If not authenticated, respond with a 401 error
+    return res(
+      ctx.status(401),
+      ctx.json({
+        message: 'Not authorized',
+      })
+    );
+  };
+
 export const authHandler = [
   rest.post(`${API_PATH}/auth/login`, (req, res, ctx) => {
     const {username, password} = qs.parse(req?.body as any);
