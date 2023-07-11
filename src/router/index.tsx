@@ -8,6 +8,7 @@ import AppLayout from '../layouts/AppLayout';
 const Home = React.lazy(() => import('../pages/Home'));
 const MyRecord = React.lazy(() => import('../pages/MyRecord'));
 const Column = React.lazy(() => import('../pages/Column'));
+const Login = React.lazy(() => import('../pages/Login'));
 
 const lazyLoad = (children: React.ReactNode) => {
   return (
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
         element: lazyLoad(<Column />),
       },
     ],
+  },
+  {
+    path: urls.LOGIN,
+    element: <Login />,
   },
   // {
   //   path: urls.ERROR_FORBIDDEN,

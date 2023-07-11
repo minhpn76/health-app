@@ -32,8 +32,8 @@ export const typographyConfiguration = {
     lineHeight: '48px',
   },
   h4: {
-    fontSize: 24,
-    lineHeight: '32px',
+    fontSize: 25,
+    lineHeight: '33px',
   },
   h5: {
     fontSize: 22,
