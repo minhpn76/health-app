@@ -1,15 +1,15 @@
-import {Box} from '@mui/material';
+import {Container, Box} from '@mui/material';
 import Recommend from './components/Recommend';
 import Posts from './components/Posts';
 
 const ColumnPage = () => {
   return (
-    <>
+    <Container maxWidth="lg" sx={{py: 6}}>
       <Recommend />
-      <Box margin={'50px 0'}>
+      <Box my={5}>
         <Posts />
       </Box>
-    </>
+    </Container>
   );
 };
 

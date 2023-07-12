@@ -1,14 +1,13 @@
 import React, {Suspense} from 'react';
 import {createBrowserRouter} from 'react-router-dom';
 
-import * as urls from '../constants/urls';
-import AppLayout from '../layouts/app-layout/AppLayout';
+import * as urls from 'src/constants/urls';
+import AppLayout from 'src/layouts/app-layout/AppLayout';
 
-// eslint-disable-next-line react-refresh/only-export-components
-const Home = React.lazy(() => import('../pages/home/HomePage'));
-const MyRecord = React.lazy(() => import('../pages/my-record/MyRecordPage'));
-const Column = React.lazy(() => import('../pages/column/ColumnPage'));
-const Login = React.lazy(() => import('../pages/login/LoginPage'));
+const Home = React.lazy(() => import('src/pages/home/HomePage'));
+const MyRecord = React.lazy(() => import('src/pages/my-record/MyRecordPage'));
+const Column = React.lazy(() => import('src/pages/column/ColumnPage'));
+const Login = React.lazy(() => import('src/pages/login/LoginPage'));
 
 const lazyLoad = (children: React.ReactNode) => {
   return (

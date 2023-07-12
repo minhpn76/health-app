@@ -10,7 +10,7 @@ let pageNumber = 1;
 const StyledDairy = styled(Box)(({theme}) => ({
   border: '1px solid',
   padding: theme.spacing(2),
-  borderColor: theme.palette.dark?.[500],
+  borderColor: theme.palette.dark?.main,
 }));
 
 const StyledTypography = styled(Typography)({
@@ -21,7 +21,7 @@ const StyledTypography = styled(Typography)({
   WebkitBoxOrient: 'vertical',
 });
 
-const Dairy = () => {
+const MyDiary = () => {
   const {
     data: diaries,
     isLoading,
@@ -100,4 +100,4 @@ const Dairy = () => {
   );
 };
 
-export default Dairy;
+export default MyDiary;

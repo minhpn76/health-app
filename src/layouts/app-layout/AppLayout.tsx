@@ -1,5 +1,5 @@
 import {PropsWithChildren} from 'react';
-import {Box, Container, styled} from '@mui/material';
+import {Box} from '@mui/material';
 import {Outlet} from 'react-router-dom';
 
 import AppHeader from '../header/AppHeader';
@@ -9,9 +9,6 @@ import AuthenticationTemplate from './AuthenticationTemplate';
 type AppLayoutProps = {
   isAnonymous?: boolean;
 };
-const SCAppContainer = styled(Container)({
-  padding: '50px 0',
-});
 
 const AppLayout = ({
   isAnonymous = false,
@@ -24,9 +21,7 @@ const AppLayout = ({
       <Box component="div" height="100vh">
         <AppHeader />
         <Box component="div" flexGrow={1}>
-          <SCAppContainer maxWidth="lg">
-            <Outlet />
-          </SCAppContainer>
+          <Outlet />
         </Box>
         <AppFooter />
       </Box>

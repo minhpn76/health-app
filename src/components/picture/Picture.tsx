@@ -3,6 +3,7 @@ import {Box, styled} from '@mui/material';
 type PictureProps = {
   link: string;
   title?: string;
+  height?: number;
 };
 
 const StyledPicture = styled(Box)({
@@ -10,9 +11,8 @@ const StyledPicture = styled(Box)({
   '& img': {
     width: '100%',
     objectFit: 'cover',
-    height: 'auto',
+    objectPosition: 'center',
     display: 'block',
-    flexGrow: 1,
   },
 });
 
@@ -24,10 +24,10 @@ const StyledTitle = styled(Box)(({theme}) => ({
   color: theme.palette.light?.main,
 }));
 
-const Picture = ({link, title}: PictureProps) => {
+const Picture = ({link, title, height}: PictureProps) => {
   return (
     <StyledPicture>
-      <Box component="img" src={link} alt={link} />
+      <Box component="img" src={link} minHeight={height} alt={link} />
       {title && <StyledTitle>{title}</StyledTitle>}
     </StyledPicture>
   );

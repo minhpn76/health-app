@@ -41,7 +41,11 @@ const MealHistory = ({
                   }
                   return (
                     <Grid item xs={3} key={meal.id}>
-                      <Picture link={meal.image} title={titleText} />
+                      <Picture
+                        link={meal.image}
+                        title={titleText}
+                        height={195}
+                      />
                     </Grid>
                   );
                 })}

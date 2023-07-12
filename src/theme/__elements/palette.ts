@@ -11,7 +11,7 @@ export default {
     main: colors.secondary300,
   },
   dark: {
-    [500]: colors.dark500,
+    main: colors.dark500,
     [600]: colors.dark600,
   },
 

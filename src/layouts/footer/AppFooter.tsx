@@ -1,9 +1,9 @@
 import {Box, Container, Typography, styled} from '@mui/material';
 
-const SCAppFooter = styled(Box)(({theme}) => ({
+const StyledAppFooter = styled(Box)(({theme}) => ({
   display: 'flex',
   alignItems: 'center',
-  backgroundColor: theme.palette.dark?.[500],
+  backgroundColor: theme.palette.dark?.main,
   padding: '50px 0',
   '& p': {
     color: theme.palette.light?.main,
@@ -11,7 +11,7 @@ const SCAppFooter = styled(Box)(({theme}) => ({
   },
 }));
 
-const SCFooterContainer = styled(Container)({
+const StyledFooterContainer = styled(Container)({
   display: 'flex',
   gap: '50px',
 });
@@ -45,15 +45,15 @@ const footerItems = [
 
 const AppFooter = () => {
   return (
-    <SCAppFooter>
-      <SCFooterContainer maxWidth="lg">
+    <StyledAppFooter>
+      <StyledFooterContainer maxWidth="lg">
         {footerItems.map((footer, idx) => (
           <Typography variant="tiny" key={idx}>
             {footer.text}
           </Typography>
         ))}
-      </SCFooterContainer>
-    </SCAppFooter>
+      </StyledFooterContainer>
+    </StyledAppFooter>
   );
 };
 

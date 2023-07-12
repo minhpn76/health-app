@@ -1,9 +1,9 @@
-import {Box} from '@mui/material';
+import {Container, Box} from '@mui/material';
 import {useState} from 'react';
 import {MealType} from 'src/@types/models/meal';
 import {useMealHistoryQuery} from 'src/hooks/meal/useMealQuery';
-import MealFilter from 'src/pages/Home/components/MealFilter';
-import MealHistory from 'src/pages/Home/components/MealHistory';
+import MealFilter from './components/MealFilter';
+import MealHistory from './components/MealHistory';
 
 let pageNumber = 1;
 
@@ -28,15 +28,17 @@ const HomePage = () => {
 
   return (
     <>
-      <Box my={3}>
+      <Container maxWidth="lg" sx={{py: 6}}>
         <MealFilter onChangeMealType={handleChangeMealType} />
-      </Box>
-      <MealHistory
-        isLoading={isLoading || isFetchingNextPage}
-        onLoadMore={handleLoadMore}
-        hasNextPage={hasNextPage}
-        data={mealHistories}
-      />
+        <Box my={5}>
+          <MealHistory
+            isLoading={isLoading || isFetchingNextPage}
+            onLoadMore={handleLoadMore}
+            hasNextPage={hasNextPage}
+            data={mealHistories}
+          />
+        </Box>
+      </Container>
     </>
   );
 };

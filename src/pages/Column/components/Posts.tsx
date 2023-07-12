@@ -63,7 +63,11 @@ const Posts = () => {
                   return (
                     <Grid item xs={3} key={p.id}>
                       <StyledWrapperPost>
-                        <Picture link={p.image} title={dateTimeText} />
+                        <Picture
+                          link={p.image}
+                          title={dateTimeText}
+                          height={185}
+                        />
                         <StyledTypography mt={1} variant="small">
                           {p.title}
                         </StyledTypography>

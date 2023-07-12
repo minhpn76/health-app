@@ -6,8 +6,9 @@ import {
   ListItemIcon,
   ListItemText,
   styled,
+  svgIconClasses,
 } from '@mui/material';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 
 import MemoIcon from 'src/icons/Memo';
 import ChallengeIcon from 'src/icons/Challenge';
@@ -16,33 +17,50 @@ import MenuIcon from 'src/icons/Menu';
 
 import * as urls from 'src/constants/urls';
 
-const SCAppHeader = styled(Box)(({theme}) => ({
+const StyledAppHeader = styled(Box)(({theme}) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  backgroundColor: theme.palette.dark?.[500],
+  backgroundColor: theme.palette.dark?.main,
 }));
 
-const SCMenu = styled(Box)(({theme}) => ({
+const StyledMenu = styled(Box)(({theme}) => ({
   display: 'flex',
   alignItems: 'center',
-  '& span': {
-    color: theme.palette.light?.main,
-  },
-  '& .MuiSvgIcon-root': {
+  [`& .${svgIconClasses.root}`]: {
     color: theme.palette.primary?.main,
   },
 }));
 
+const StyledTextLink = styled(ListItemText)<{isActive?: boolean}>(
+  ({theme, isActive}) => ({
+    '& span': {
+      color: `${
+        isActive ? theme.palette.primary.main : theme.palette.light?.main
+      }`,
+    },
+  })
+);
+
 const menus = [
-  {icon: <MemoIcon viewBox="0 0 32 32" />, label: '自分の記録', link: '/test'},
-  {icon: <ChallengeIcon viewBox="0 0 32 32" />, label: 'チャレンジ', link: '/'},
-  {icon: <InfoIcon viewBox="0 0 32 32" />, label: 'お知らせ', link: '/'},
+  {
+    icon: <MemoIcon viewBox="0 0 32 32" />,
+    label: '自分の記録',
+    link: urls.MY_RECORD,
+  },
+  {
+    icon: <ChallengeIcon viewBox="0 0 32 32" />,
+    label: 'チャレンジ',
+    link: '#',
+  },
+  {icon: <InfoIcon viewBox="0 0 32 32" />, label: 'お知らせ', link: '#'},
 ];
 
 const AppHeader = () => {
+  const location = useLocation();
+  console.log('location', location.pathname);
   return (
-    <SCAppHeader>
+    <StyledAppHeader>
       <Container maxWidth="lg">
         <Box
           component="div"
@@ -55,16 +73,13 @@ const AppHeader = () => {
               <Box component="img" src="/logo.svg" alt="logo" />
             </Link>
           </Box>
-          <SCMenu>
+          <StyledMenu>
             {menus.map((menu, idx) => (
-              <ListItemButton key={idx}>
+              <ListItemButton key={idx} component={Link} to={menu.link}>
                 <ListItemIcon>{menu.icon}</ListItemIcon>
-                <ListItemText
+                <StyledTextLink
+                  isActive={menu.link === location.pathname}
                   primary={menu.label}
-                  primaryTypographyProps={{
-                    fontSize: 14,
-                    fontWeight: 'medium',
-                  }}
                 />
               </ListItemButton>
             ))}
@@ -73,10 +88,10 @@ const AppHeader = () => {
                 <MenuIcon viewBox="0 0 32 32" />
               </IconButton>
             </Box>
-          </SCMenu>
+          </StyledMenu>
         </Box>
       </Container>
-    </SCAppHeader>
+    </StyledAppHeader>
   );
 };
 

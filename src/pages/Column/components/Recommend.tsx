@@ -2,6 +2,7 @@ import {Box, Grid, Typography, styled} from '@mui/material';
 
 const StyledRecommendItem = styled(Box)(({theme}) => ({
   backgroundColor: theme.palette.dark?.[600],
+  cursor: 'pointer',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -15,7 +16,7 @@ const StyledRecommendItem = styled(Box)(({theme}) => ({
   gap: theme.spacing(2),
 }));
 
-const SCLine = styled(Box)(({theme}) => ({
+const StyledLine = styled(Box)(({theme}) => ({
   width: theme.spacing(7),
   height: 2,
   backgroundColor: theme.palette.light?.main,
@@ -47,7 +48,7 @@ const Recommend = () => {
         <Grid item xs={3} key={idx}>
           <StyledRecommendItem>
             <Typography variant="h5">{recommend.title}</Typography>
-            <SCLine />
+            <StyledLine />
             <Typography variant="p">{recommend.description}</Typography>
           </StyledRecommendItem>
         </Grid>

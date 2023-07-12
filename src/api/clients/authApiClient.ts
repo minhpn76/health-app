@@ -31,31 +31,10 @@ export namespace authApiClient {
           'expired at',
           new Date(token.expiryAt)
         );
-        // return refreshToken(token.refreshToken);
-      } else {
         return undefined;
       }
-    } catch {
       return undefined;
-    }
-  };
-
-  const refreshToken = async (refreshToken: string) => {
-    try {
-      const response = await axios.get<ApiToken>(
-        `${API_PATH}/auth/refreshtoken`,
-        {
-          headers: {Authorization: `Bearer ${refreshToken}`},
-        }
-      );
-      const token = response.data;
-      localStorage.setItem(
-        LOCAL_STORAGE_KEY.TOKEN_PAYLOAD,
-        JSON.stringify(token)
-      );
-      return token;
     } catch {
-      //  refresh token not valid or expired
       return undefined;
     }
   };

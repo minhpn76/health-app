@@ -28,7 +28,7 @@ export const validateToken = (req: any) => {
       const {accessToken: tokenAuth} = token;
       if (tokenAuth !== accessToken) {
         console.error(
-          'Invalid authorisation token',
+          'Invalid token',
           'Client->',
           accessToken,
           'Server->',
@@ -75,31 +75,6 @@ export const authHandler = [
         })
       );
     }
-  }),
-  rest.get(`${API_PATH}/auth/refreshtoken`, (req, res, ctx) => {
-    let refreshToken = req.headers.get('Authorization');
-
-    if (refreshToken) {
-      refreshToken = refreshToken.substring(7);
-
-      const tokenStr = localStorage.getItem(LOCAL_STORAGE_KEY.KEY_TOKEN);
-      if (tokenStr) {
-        const token = JSON.parse(tokenStr);
-        if (token.refreshToken && token.refreshToken === refreshToken) {
-          const token = generateToken();
-          return res(ctx.status(200), ctx.json(token));
-        }
-      }
-
-      const token = generateToken();
-      return res(ctx.status(200), ctx.json(token));
-    }
-    return res(
-      ctx.status(401),
-      ctx.json({
-        message: 'Unauthorized request',
-      })
-    );
   }),
 
   rest.get(`${API_PATH}/user/me`, (req, res, ctx) => {
