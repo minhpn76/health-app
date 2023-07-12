@@ -2,7 +2,6 @@ import {PropsWithChildren, ReactElement, useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {UserEntity} from 'src/@types/models/auth';
 import {authApiClient} from 'src/api/clients/authApiClient';
-import * as urls from 'src/constants/urls';
 import {loginRedirect} from 'src/utils/common';
 
 type AuthenticationTemplateProps = {
@@ -58,12 +57,6 @@ const AuthenticatedTemplate = ({
         loginRedirect(navigate);
       });
   }, [navigate]);
-
-  useEffect(() => {
-    if (userData) {
-      navigate(urls.HOME);
-    }
-  }, [navigate, userData]);
 
   if (isLoading) {
     return Loading;

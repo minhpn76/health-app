@@ -5,4 +5,5 @@ export const QUERY_KEYS = {
 export const QUERY_TOPICS = {
   MEAL_HISTORY: 'meal-history',
   POSTS: 'posts',
+  MY_DIARY: 'my-diary',
 };

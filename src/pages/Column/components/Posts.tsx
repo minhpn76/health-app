@@ -86,21 +86,18 @@ const Posts = () => {
                 })}
               </Fragment>
             ))}
-            <Grid item xs={12}>
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                mt={4}
-              >
-                <ButtonLoadMore
-                  onClick={handleLoadMore}
-                  disabled={!hasNextPage}
+            {hasNextPage && (
+              <Grid item xs={12}>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  mt={4}
                 >
-                  コラムをもっと見る
-                </ButtonLoadMore>
-              </Box>
-            </Grid>
+                  <ButtonLoadMore onClick={handleLoadMore} />
+                </Box>
+              </Grid>
+            )}
           </>
         ) : (
           <Grid item xs={12}>

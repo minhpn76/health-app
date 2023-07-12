@@ -14,7 +14,10 @@ const StyledButtonLoadMore = styled(Button)(({theme, disabled}) => ({
       }),
 }));
 
-const ButtonLoadMore = ({children, ...restProps}: ButtonLoadMore) => {
+const ButtonLoadMore = ({
+  children = 'コラムをもっと見る',
+  ...restProps
+}: ButtonLoadMore) => {
   return <StyledButtonLoadMore {...restProps}>{children}</StyledButtonLoadMore>;
 };
 

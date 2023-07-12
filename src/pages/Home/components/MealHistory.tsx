@@ -47,25 +47,18 @@ const MealHistory = ({
                 })}
               </Fragment>
             ))}
-            <Grid item xs={12}>
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                mt={4}
-              >
+            {hasNextPage && (
+              <Grid item xs={12}>
                 <Box
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
                   mt={4}
                 >
-                  <ButtonLoadMore onClick={onLoadMore} disabled={!hasNextPage}>
-                    記録をもっと見る
-                  </ButtonLoadMore>
+                  <ButtonLoadMore onClick={onLoadMore} />
                 </Box>
-              </Box>
-            </Grid>
+              </Grid>
+            )}
           </>
         ) : (
           <Grid item xs={12}>
