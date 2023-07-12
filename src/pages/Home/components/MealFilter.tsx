@@ -6,8 +6,13 @@ import {
   styled,
   svgIconClasses,
 } from '@mui/material';
+import {MealType} from 'src/@types/models/meal';
 
 import {Knife as KnifeIcon, Cup as CupIcon} from 'src/icons';
+
+type MealFilterProps = {
+  onChangeMealType: (type: MealType) => void;
+};
 
 const StyledFilterItem = styled(Box)(({theme}) => ({
   width: 136,
@@ -49,12 +54,15 @@ const filterMeals = [
   },
 ];
 
-const MealFilter = () => {
+const MealFilter = ({onChangeMealType}: MealFilterProps) => {
   return (
     <Container maxWidth="md">
       <Grid display="flex" justifyContent="space-evenly" alignItems="center">
         {filterMeals.map((meal, idx) => (
-          <StyledFilterItem key={idx}>
+          <StyledFilterItem
+            key={idx}
+            onClick={() => onChangeMealType(meal.text as MealType)}
+          >
             {meal.icon}
             <Typography variant="body">{meal.text}</Typography>
           </StyledFilterItem>

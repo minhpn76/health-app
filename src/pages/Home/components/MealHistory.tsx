@@ -1,23 +1,79 @@
-import {Box, Grid, styled} from '@mui/material';
+import {Box, Grid} from '@mui/material';
+import {InfiniteData} from '@tanstack/react-query';
+import {Fragment} from 'react';
+import {MealHistoryEntity} from 'src/@types/models/meal';
+import {PaginableData} from 'src/@types/models/paginableData';
+import {DataLoading, NoResultsFound} from 'src/components';
 import ButtonLoadMore from 'src/components/button-load-more/ButtonLoadMore';
 import Picture from 'src/components/picture/Picture';
+import {formatDate, MM_DD} from 'src/utils/date';
 
-const MealHistory = () => {
+type MealHistoryProps = {
+  isLoading: boolean;
+  data?: InfiniteData<PaginableData<MealHistoryEntity>>;
+  hasNextPage?: boolean;
+  onLoadMore: () => void;
+};
+
+const MealHistory = ({
+  isLoading,
+  data,
+  hasNextPage,
+  onLoadMore,
+}: MealHistoryProps) => {
   return (
-    <>
+    <DataLoading isLoading={isLoading}>
       <Grid container spacing={1}>
-        {Array(8)
-          .fill(null)
-          .map(i => (
-            <Grid item xs={3}>
-              <Picture link="/images/d02.jpg" title="05.21.Dinner" />
+        {data && data.pages.length > 0 ? (
+          <>
+            {data.pages.map((group, idx) => (
+              <Fragment key={idx}>
+                {group.data.map(meal => {
+                  let titleText = '';
+                  if (meal.datedOn) {
+                    titleText += formatDate(
+                      new Date(meal.datedOn).toLocaleString(),
+                      MM_DD
+                    );
+                  }
+                  if (meal.type) {
+                    titleText += `.${meal.type}`;
+                  }
+                  return (
+                    <Grid item xs={3} key={meal.id}>
+                      <Picture link={meal.image} title={titleText} />
+                    </Grid>
+                  );
+                })}
+              </Fragment>
+            ))}
+            <Grid item xs={12}>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                mt={4}
+              >
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  mt={4}
+                >
+                  <ButtonLoadMore onClick={onLoadMore} disabled={!hasNextPage}>
+                    記録をもっと見る
+                  </ButtonLoadMore>
+                </Box>
+              </Box>
             </Grid>
-          ))}
+          </>
+        ) : (
+          <Grid item xs={12}>
+            <NoResultsFound />
+          </Grid>
+        )}
       </Grid>
-      <Box display="flex" alignItems="center" justifyContent="center" mt={4}>
-        <ButtonLoadMore>記録をもっと見る</ButtonLoadMore>
-      </Box>
-    </>
+    </DataLoading>
   );
 };
 

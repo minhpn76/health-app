@@ -36,7 +36,7 @@ const router = createBrowserRouter([
   },
   {
     path: urls.COLUMN,
-    element: <AppLayout />,
+    element: <AppLayout isAnonymous />,
     children: [
       {
         index: true,

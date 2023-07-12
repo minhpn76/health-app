@@ -1,5 +1,7 @@
 import {format} from 'date-fns';
 
+export const MM_DD = 'MM.dd';
+
 export const formatDate = (dateString?: string, pattern?: string) => {
   if (!dateString) return '';
   const dateObject = new Date(dateString);

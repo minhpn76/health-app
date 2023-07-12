@@ -14,16 +14,15 @@ const setupHttpClientInterceptors = () => {
   const onRequest = async (config: InternalAxiosRequestConfig) => {
     const abortController = new AbortController();
     const token = await authApiClient.getToken();
-    if (!token) {
-      const abortConfig = {
-        ...config,
-        signal: abortController.signal,
-      };
-      abortController.abort();
-      loginRedirect();
-      return abortConfig;
-    }
-
+    // if (!token) {
+    //   const abortConfig = {
+    //     ...config,
+    //     signal: abortController.signal,
+    //   };
+    //   abortController.abort();
+    //   loginRedirect();
+    //   return abortConfig;
+    // }
     config.headers.Authorization = `Bearer ${token?.accessToken}`;
 
     config.paramsSerializer = {

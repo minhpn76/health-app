@@ -8,6 +8,7 @@ export namespace authApiClient {
     form.append('username', username);
     form.append('password', password);
     const response = await axios.post<ApiToken>(`${API_PATH}/auth/login`, form);
+    console.log('response', response);
     localStorage.setItem(
       LOCAL_STORAGE_KEY.TOKEN_PAYLOAD,
       JSON.stringify(response.data)
@@ -30,7 +31,7 @@ export namespace authApiClient {
           'expired at',
           new Date(token.expiryAt)
         );
-        return refreshToken(token.refreshToken);
+        // return refreshToken(token.refreshToken);
       } else {
         return undefined;
       }
