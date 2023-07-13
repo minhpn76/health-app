@@ -3,10 +3,15 @@ import * as colors from './colors';
 export const fontFamily = {
   Inter: 'Inter',
   NotoSanJP: 'Noto Sans JP',
+  Hiragino: 'Hiragino',
 };
 
 export const typographyConfiguration = {
-  fontFamily: fontFamily.Inter,
+  fontFamily: [
+    fontFamily.Inter,
+    fontFamily.Hiragino,
+    fontFamily.NotoSanJP,
+  ].join(','),
   fontWeightRegular: 400,
   fontWeightBold: 700,
   fontWeightMedium: 500,

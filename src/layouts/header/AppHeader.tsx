@@ -58,7 +58,6 @@ const menus = [
 
 const AppHeader = () => {
   const location = useLocation();
-  console.log('location', location.pathname);
   return (
     <StyledAppHeader>
       <Container maxWidth="lg">

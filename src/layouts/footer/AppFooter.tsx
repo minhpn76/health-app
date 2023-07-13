@@ -7,7 +7,6 @@ const StyledAppFooter = styled(Box)(({theme}) => ({
   padding: '50px 0',
   '& p': {
     color: theme.palette.light?.main,
-    fontFamily: theme.typography.fontFamily,
   },
 }));
 
