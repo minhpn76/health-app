@@ -35,7 +35,7 @@ const router = createBrowserRouter([
   },
   {
     path: urls.COLUMN,
-    element: <AppLayout />,
+    element: <AppLayout isAnonymous />,
     children: [
       {
         index: true,
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
   },
   {
     path: urls.LOGIN,
-    element: <Login />,
+    element: lazyLoad(<Login />),
   },
   // {
   //   path: urls.ERROR_FORBIDDEN,

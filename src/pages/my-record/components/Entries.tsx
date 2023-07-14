@@ -6,8 +6,11 @@ import MyRecommend3Image from 'src/assets/images/MyRecommend-3.jpg';
 
 const StyledEntry = styled(Box)(({theme}) => ({
   backgroundColor: theme.palette.primary[300],
-  padding: theme.spacing(3),
+  padding: theme.spacing(2),
   position: 'relative',
+  [theme.breakpoints.down('md')]: {
+    padding: theme.spacing(1),
+  },
 }));
 
 const StyledImg = styled('img')({
@@ -26,11 +29,25 @@ const StyledTypo = styled(Box)(({theme}) => ({
   '& h4': {
     color: theme.palette.primary[300],
     marginBottom: theme.spacing(1),
+    [theme.breakpoints.down('md')]: {
+      fontSize: '20px',
+      lineHeight: '28px',
+    },
   },
   '& p': {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.light?.main,
     padding: `3px ${theme.spacing(2)}`,
+    [theme.breakpoints.down('md')]: {
+      padding: 0,
+      fontSize: '12px',
+      lineHeight: '20px',
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: `3px ${theme.spacing(2)}`,
+      fontSize: '18px',
+      lineHeight: '24px',
+    },
   },
 }));
 
@@ -54,9 +71,9 @@ const entries = [
 
 const Entries = () => {
   return (
-    <Grid container spacing={5}>
+    <Grid container spacing={{xs: 3, sm: 2, md: 5}}>
       {entries.map((entry, idx) => (
-        <Grid item xs={4} key={idx}>
+        <Grid item xs={12} sm={4} key={idx}>
           <StyledEntry>
             <StyledImg src={entry.image} />
             <StyledTypo>

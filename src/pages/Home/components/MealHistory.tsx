@@ -40,7 +40,7 @@ const MealHistory = ({
                     titleText += `.${meal.type}`;
                   }
                   return (
-                    <Grid item xs={3} key={meal.id}>
+                    <Grid item xs={12} sm={6} md={3} key={meal.id}>
                       <Picture
                         link={meal.image}
                         title={titleText}

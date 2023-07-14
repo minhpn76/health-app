@@ -14,6 +14,14 @@ type MealFilterProps = {
   onChangeMealType: (type: MealType) => void;
 };
 
+const StyledMealFilter = styled(Grid)(({theme}) => ({
+  display: 'flex',
+  justifyContent: 'space-evenly',
+  alignItems: 'center',
+  flexWrap: 'wrap',
+  gap: theme.spacing(2),
+}));
+
 const StyledFilterItem = styled(Box)(({theme}) => ({
   width: 136,
   height: 136,
@@ -57,7 +65,7 @@ const filterMeals = [
 const MealFilter = ({onChangeMealType}: MealFilterProps) => {
   return (
     <Container maxWidth="md">
-      <Grid display="flex" justifyContent="space-evenly" alignItems="center">
+      <StyledMealFilter>
         {filterMeals.map((meal, idx) => (
           <StyledFilterItem
             key={idx}
@@ -67,7 +75,7 @@ const MealFilter = ({onChangeMealType}: MealFilterProps) => {
             <Typography variant="body">{meal.text}</Typography>
           </StyledFilterItem>
         ))}
-      </Grid>
+      </StyledMealFilter>
     </Container>
   );
 };

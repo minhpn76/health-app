@@ -1,6 +1,7 @@
 import {
   Box,
   Container,
+  Hidden,
   IconButton,
   ListItemButton,
   ListItemIcon,
@@ -73,15 +74,17 @@ const AppHeader = () => {
             </Link>
           </Box>
           <StyledMenu>
-            {menus.map((menu, idx) => (
-              <ListItemButton key={idx} component={Link} to={menu.link}>
-                <ListItemIcon>{menu.icon}</ListItemIcon>
-                <StyledTextLink
-                  isActive={menu.link === location.pathname}
-                  primary={menu.label}
-                />
-              </ListItemButton>
-            ))}
+            <Hidden smDown>
+              {menus.map((menu, idx) => (
+                <ListItemButton key={idx} component={Link} to={menu.link}>
+                  <ListItemIcon>{menu.icon}</ListItemIcon>
+                  <StyledTextLink
+                    isActive={menu.link === location.pathname}
+                    primary={menu.label}
+                  />
+                </ListItemButton>
+              ))}
+            </Hidden>
             <Box component="div">
               <IconButton>
                 <MenuIcon viewBox="0 0 32 32" />

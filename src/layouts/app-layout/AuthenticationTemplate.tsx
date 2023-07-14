@@ -17,7 +17,7 @@ const AuthenticationTemplate = ({
   return (
     <>
       {isAnonymous ? (
-        {children}
+        <>{children}</>
       ) : (
         <AuthenticatedTemplate loadingComponent={loadingComponent}>
           {children}

@@ -60,7 +60,7 @@ const MyDiary = () => {
                       );
                     }
                     return (
-                      <Grid item xs={3}>
+                      <Grid item xs={12} sm={6} md={3} key={d.id}>
                         <StyledDairy>
                           <Typography variant="p">{dateText}</Typography>
                           <Typography variant="p">{timeText}</Typography>

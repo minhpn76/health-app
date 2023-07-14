@@ -13,6 +13,7 @@ const StyledAppFooter = styled(Box)(({theme}) => ({
 const StyledFooterContainer = styled(Container)({
   display: 'flex',
   gap: '50px',
+  flexWrap: 'wrap',
 });
 
 const footerItems = [

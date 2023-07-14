@@ -58,11 +58,11 @@ export const typographyConfiguration = {
   },
   small: {
     fontSize: 15,
-    lineHeight: '17px',
+    lineHeight: '21px',
   },
   tiny: {
     fontSize: 12,
-    lineHeight: '10px',
+    lineHeight: '20px',
   },
 };
 
