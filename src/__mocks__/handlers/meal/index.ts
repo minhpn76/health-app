@@ -1,6 +1,6 @@
 import {rest} from 'msw';
 import {orderBy} from 'lodash';
-import {API_PATH, LOCAL_STORAGE_KEY} from 'src/constants/common';
+import {API_PATH, LOCAL_STORAGE_KEY, TIME_DELAY} from 'src/constants/common';
 import {mealHistory} from './data/mealData';
 
 export const mealHandlers = [
@@ -35,7 +35,7 @@ export const mealHandlers = [
       totalPage,
       totalRecords,
     };
-    return res(ctx.status(200), ctx.json(resp), ctx.delay(300));
+    return res(ctx.status(200), ctx.json(resp), ctx.delay(TIME_DELAY));
   }),
 ];
 

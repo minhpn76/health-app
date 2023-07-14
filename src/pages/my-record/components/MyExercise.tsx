@@ -1,4 +1,6 @@
 import {Box, Grid, styled, Typography} from '@mui/material';
+import {DataLoading, NoResultsFound} from 'src/components';
+import {useExerciseQuery} from 'src/hooks/exercise/useExerciseQueries';
 
 const StyledMyExercise = styled(Box)(({theme}) => ({
   backgroundColor: theme.palette.dark?.main,
@@ -20,12 +22,17 @@ const StyledTitle = styled(Box)(({theme}) => ({
 const StyledExerciseTable = styled(Grid)(({theme}) => ({
   height: '260px',
   overflowY: 'scroll',
+
   '&::-webkit-scrollbar': {
     width: '6px',
     backgroundColor: '#ffff',
   },
   '&::-webkit-scrollbar-thumb': {
-    backgroundColor: '#D62929',
+    borderRadius: theme.spacing(1),
+    backgroundColor: theme.palette.primary[300],
+  },
+  '&::-webkit-scrollbar-track': {
+    marginBlock: '15px',
   },
 }));
 
@@ -63,6 +70,9 @@ const StyledExerciseInfo = styled(Box)(({theme}) => ({
 }));
 
 const MyExercise = () => {
+  const {data: exercises, isLoading} = useExerciseQuery({
+    createdOn: '2022-05-21T00:00:00.000Z',
+  });
   return (
     <StyledMyExercise>
       <StyledTitle>
@@ -73,26 +83,34 @@ const MyExercise = () => {
         <Typography variant="h5">2021.05.21</Typography>
       </StyledTitle>
       <Box mt={2}>
-        <StyledExerciseTable container spacing={2}>
-          {Array(20)
-            .fill(null)
-            .map(i => (
-              <Grid item xs={6}>
-                <StyledExerciseItem>
-                  <Box>
-                    <StyledDot>●</StyledDot>
-                    <StyledExerciseInfo>
-                      <Typography variant="small">
-                        家事全般（立位・軽い）
-                      </Typography>
-                      <Typography variant="small">26kcal</Typography>
-                    </StyledExerciseInfo>
-                  </Box>
-                  <Typography variant="p">10 min</Typography>
-                </StyledExerciseItem>
+        <DataLoading isLoading={isLoading}>
+          <StyledExerciseTable container spacing={2}>
+            {exercises && exercises.length > 0 ? (
+              <>
+                {exercises.map(ex => (
+                  <Grid item xs={6} key={ex.id}>
+                    <StyledExerciseItem>
+                      <Box>
+                        <StyledDot>●</StyledDot>
+                        <StyledExerciseInfo>
+                          <Typography variant="small">{ex.activity}</Typography>
+                          <Typography variant="small">
+                            {ex.energyConsumption}
+                          </Typography>
+                        </StyledExerciseInfo>
+                      </Box>
+                      <Typography variant="p">{ex.activityTime}</Typography>
+                    </StyledExerciseItem>
+                  </Grid>
+                ))}
+              </>
+            ) : (
+              <Grid item xs={12}>
+                <NoResultsFound />
               </Grid>
-            ))}
-        </StyledExerciseTable>
+            )}
+          </StyledExerciseTable>
+        </DataLoading>
       </Box>
     </StyledMyExercise>
   );

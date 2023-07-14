@@ -1,6 +1,10 @@
 import {rest} from 'msw';
 import qs from 'qs';
-import {API_PATH, LOCAL_STORAGE_KEY} from '../../../constants/common';
+import {
+  API_PATH,
+  LOCAL_STORAGE_KEY,
+  TIME_DELAY,
+} from '../../../constants/common';
 import {users} from './data/userData';
 
 const generateToken = () => {
@@ -52,7 +56,8 @@ export const authenticatedWrapper =
       ctx.status(401),
       ctx.json({
         message: 'Not authorized',
-      })
+      }),
+      ctx.delay(TIME_DELAY)
     );
   };
 
@@ -66,13 +71,14 @@ export const authHandler = [
 
     if (user?.password === password) {
       const token = generateToken();
-      return res(ctx.status(200), ctx.json(token), ctx.delay(3000));
+      return res(ctx.status(200), ctx.json(token), ctx.delay(TIME_DELAY));
     } else {
       return res(
         ctx.status(400),
         ctx.json({
           message: 'Username or password is wrong',
-        })
+        }),
+        ctx.delay(TIME_DELAY)
       );
     }
   }),
@@ -89,7 +95,8 @@ export const authHandler = [
       ctx.status(401),
       ctx.json({
         message: 'Not authorized',
-      })
+      }),
+      ctx.delay(TIME_DELAY)
     );
   }),
 ];

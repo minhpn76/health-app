@@ -23,6 +23,9 @@ const StyledAppHeader = styled(Box)(({theme}) => ({
   justifyContent: 'space-between',
   alignItems: 'center',
   backgroundColor: theme.palette.dark?.main,
+  position: 'sticky',
+  top: 0,
+  zIndex: 2,
 }));
 
 const StyledMenu = styled(Box)(({theme}) => ({

@@ -1,20 +1,10 @@
 import {PropsWithChildren} from 'react';
-import {Container, Skeleton as MuiSkeleton} from '@mui/material';
+import {Container} from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 
 type DataLoadingProps = {
   isLoading: boolean;
 };
-
-const Skeleton = () => (
-  <>
-    <MuiSkeleton />
-    <MuiSkeleton animation="wave" />
-    <MuiSkeleton animation="wave" />
-    <MuiSkeleton animation="wave" />
-    <MuiSkeleton animation="wave" />
-    <MuiSkeleton animation={false} />
-  </>
-);
 
 const DataLoading = ({
   isLoading,
@@ -23,8 +13,11 @@ const DataLoading = ({
   return (
     <>
       {isLoading ? (
-        <Container maxWidth="md">
-          <Skeleton />
+        <Container
+          maxWidth="md"
+          sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+        >
+          <CircularProgress />
         </Container>
       ) : (
         children

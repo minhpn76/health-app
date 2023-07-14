@@ -6,7 +6,10 @@ export const LOCAL_STORAGE_KEY = {
   KEY_POSTS: '_mock_posts',
   KEY_MEAL_HISTORY: '_mock_meal_history',
   KEY_MY_DIARY: '_mock_my_diary',
+  KEY_MY_EXERCISE: '_mock_my_exercise',
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-export const API_PATH = import.meta.env.VITE_APP_URI || '';
+export const API_PATH = `${import.meta.env.VITE_APP_URI || ''}/api/v1`;
+
+export const TIME_DELAY = 3000;

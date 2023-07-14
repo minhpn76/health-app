@@ -1,5 +1,5 @@
 import {rest} from 'msw';
-import {API_PATH, LOCAL_STORAGE_KEY} from 'src/constants/common';
+import {API_PATH, LOCAL_STORAGE_KEY, TIME_DELAY} from 'src/constants/common';
 import {postData} from './data/postData';
 
 export const columnHandlers = [
@@ -29,7 +29,7 @@ export const columnHandlers = [
       totalPage,
       totalRecords,
     };
-    return res(ctx.status(200), ctx.json(resp), ctx.delay(300));
+    return res(ctx.status(200), ctx.json(resp), ctx.delay(TIME_DELAY));
   }),
 ];
 
