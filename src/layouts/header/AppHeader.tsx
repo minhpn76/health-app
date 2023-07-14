@@ -74,7 +74,7 @@ const AppHeader = () => {
             </Link>
           </Box>
           <StyledMenu>
-            <Hidden smDown>
+            <Hidden mdDown>
               {menus.map((menu, idx) => (
                 <ListItemButton key={idx} component={Link} to={menu.link}>
                   <ListItemIcon>{menu.icon}</ListItemIcon>

@@ -14,7 +14,9 @@ export default {
     main: colors.dark500,
     [600]: colors.dark600,
   },
-
+  gray: {
+    main: colors.gray400,
+  },
   light: {
     main: colors.light,
   },
