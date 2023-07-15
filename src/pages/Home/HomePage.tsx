@@ -4,6 +4,7 @@ import {MealType} from 'src/@types/models/meal';
 import {useMealHistoryQuery} from 'src/hooks/meal/useMealQuery';
 import MealFilter from './components/MealFilter';
 import MealHistory from './components/MealHistory';
+import MyAnalysis from './components/MyAnalysis';
 
 let pageNumber = 1;
 
@@ -28,6 +29,7 @@ const HomePage = () => {
 
   return (
     <>
+      <MyAnalysis />
       <Container maxWidth="lg" sx={{py: 6}}>
         <MealFilter onChangeMealType={handleChangeMealType} />
         <Box my={5}>

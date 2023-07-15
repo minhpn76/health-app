@@ -68,3 +68,9 @@ declare module '@mui/material/IconButton' {
     pressed: true;
   }
 }
+
+declare module '@mui/material/CircularProgress' {
+  interface CircularProgressPropsColorOverrides {
+    light?: LightColors;
+  }
+}
