@@ -1,7 +1,6 @@
 import {BaseEntity} from './baseEntities';
-import PagedQuery from './pagedQuery';
 
-export interface MyExercisePagedQuery extends PagedQuery {
+export interface MyExerciseQuery {
   createdOn?: string;
 }
 

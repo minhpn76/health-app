@@ -7,4 +7,5 @@ export const QUERY_TOPICS = {
   POSTS: 'posts',
   MY_DIARY: 'my-diary',
   MY_EXERCISE: 'my-exercise',
+  BODY_RECORD: 'body-record',
 };
