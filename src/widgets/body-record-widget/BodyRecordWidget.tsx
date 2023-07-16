@@ -7,11 +7,13 @@ import useElementSize from 'src/hooks/common/useElementSize';
 
 const STROKEWIDTH = 3;
 
-type BodyChartProps = {
+type BodyRecordWidgetProps = {
   periodType?: PeriodType;
 };
 
-const BodyChart = ({periodType = PeriodType.YEAR}: BodyChartProps) => {
+const BodyRecordWidget = ({
+  periodType = PeriodType.YEAR,
+}: BodyRecordWidgetProps) => {
   const theme = useTheme();
   const [rootRef, {width, height: heightRootEl}] = useElementSize();
 
@@ -54,4 +56,4 @@ const BodyChart = ({periodType = PeriodType.YEAR}: BodyChartProps) => {
   );
 };
 
-export default BodyChart;
+export default BodyRecordWidget;

@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {Box, Typography, Button, styled} from '@mui/material';
 import {WrapperBox} from 'src/components';
 import {PeriodType} from 'src/@types/models/bodyRecord';
-import BodyChart from 'src/charts/BodyChart';
+import BodyRecordWidget from 'src/widgets/body-record-widget/BodyRecordWidget';
 
 const StyledWrapperAction = styled(Box)(({theme}) => ({
   display: 'flex',
@@ -54,7 +54,7 @@ const BodyRecords = () => {
         </>
       }
     >
-      <BodyChart periodType={periodType} />
+      <BodyRecordWidget periodType={periodType} />
       <StyledWrapperAction mt={2}>
         {actions.map((ac, idx) => (
           <StyledAction

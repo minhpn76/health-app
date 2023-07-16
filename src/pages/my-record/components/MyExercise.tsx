@@ -6,6 +6,7 @@ import {WrapperBox} from 'src/components';
 const StyledExerciseTable = styled(Grid)(({theme}) => ({
   height: '260px',
   overflowY: 'scroll',
+  paddingRight: theme.spacing(2),
 
   '&::-webkit-scrollbar': {
     width: '6px',
@@ -14,9 +15,6 @@ const StyledExerciseTable = styled(Grid)(({theme}) => ({
   '&::-webkit-scrollbar-thumb': {
     borderRadius: theme.spacing(1),
     backgroundColor: theme.palette.primary[300],
-  },
-  '&::-webkit-scrollbar-track': {
-    marginBlock: '15px',
   },
 }));
 

@@ -10,7 +10,7 @@ import {
 import {DataLoading, NoResultsFound, WrapperBox} from 'src/components';
 import {useAnalysisQuery} from 'src/hooks/analysis/useAnalysisQueries';
 import {MM_SLASH_DD, formatDate} from 'src/utils/date';
-import BodyChart from 'src/charts/BodyChart';
+import BodyRecordWidget from 'src/widgets/body-record-widget/BodyRecordWidget';
 
 const StyledWrapperImage = styled(Box)(({theme}) => ({
   background: `url("/images/d01.jpg"), linear-gradient(255deg, ${theme.palette.primary[300]} 0%,  ${theme.palette.primary.main} 100%)`,
@@ -91,7 +91,7 @@ const MyAnalysis = () => {
           alignItems="center"
           justifyContent="center"
         >
-          <BodyChart />
+          <BodyRecordWidget />
         </WrapperBox>
       </Grid>
     </Grid>
