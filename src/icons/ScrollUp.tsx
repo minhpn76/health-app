@@ -5,7 +5,7 @@ const ScrollUp = (props: SvgIconProps) => (
     <path
       d="M24 0.5C36.9787 0.5 47.5 11.0213 47.5 24C47.5 36.9787 36.9787 47.5 24 47.5C11.0213 47.5 0.5 36.9787 0.5 24C0.5 11.0213 11.0213 0.5 24 0.5Z"
       fill="white"
-      fill-opacity="0.01"
+      fillOpacity="0.01"
       stroke="#777777"
     />
     <path

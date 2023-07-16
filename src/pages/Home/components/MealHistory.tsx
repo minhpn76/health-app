@@ -6,7 +6,7 @@ import {PaginableData} from 'src/@types/models/paginableData';
 import {DataLoading, NoResultsFound} from 'src/components';
 import ButtonLoadMore from 'src/components/button-load-more/ButtonLoadMore';
 import Picture from 'src/components/picture/Picture';
-import {formatDate, MM_DD} from 'src/utils/date';
+import {formatDate, MM_DOT_DD} from 'src/utils/date';
 
 type MealHistoryProps = {
   isLoading: boolean;
@@ -33,7 +33,7 @@ const MealHistory = ({
                   if (meal.datedOn) {
                     titleText += formatDate(
                       new Date(meal.datedOn).toLocaleString(),
-                      MM_DD
+                      MM_DOT_DD
                     );
                   }
                   if (meal.type) {

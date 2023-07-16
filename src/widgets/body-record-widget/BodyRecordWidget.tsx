@@ -20,7 +20,13 @@ const BodyRecordWidget = ({
   const {data: bodyRecords, isLoading} = useBodyRecordQuery({periodType});
 
   return (
-    <Stack width="100%" height={250} ref={rootRef}>
+    <Stack
+      width="100%"
+      height={250}
+      ref={rootRef}
+      display="flex"
+      justifyContent="center"
+    >
       <DataLoading isLoading={isLoading}>
         {bodyRecords && bodyRecords.length > 0 ? (
           <LineChart

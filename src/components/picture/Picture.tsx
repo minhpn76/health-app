@@ -1,15 +1,17 @@
-import {Box, styled} from '@mui/material';
+import {Box, BoxProps, styled} from '@mui/material';
 
 type PictureProps = {
   link: string;
   title?: string;
-  height?: number;
-};
+} & Omit<BoxProps, 'title'>;
 
 const StyledPicture = styled(Box)({
   position: 'relative',
+  height: '100%',
+  cursor: 'pointer',
   '& img': {
     width: '100%',
+    height: '100%',
     objectFit: 'cover',
     objectPosition: 'center',
     display: 'block',

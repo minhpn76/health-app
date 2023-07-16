@@ -1,6 +1,6 @@
 import {format} from 'date-fns';
 
-export const MM_DD = 'MM.dd';
+export const MM_DOT_DD = 'MM.dd';
 export const HH_MM = 'HH.mm';
 export const YYYY_MM_DD = 'yyyy.MM.dd';
 export const MM_SLASH_DD = 'MM/dd';
