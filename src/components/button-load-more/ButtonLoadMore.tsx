@@ -18,7 +18,11 @@ const ButtonLoadMore = ({
   children = 'コラムをもっと見る',
   ...restProps
 }: ButtonLoadMore) => {
-  return <StyledButtonLoadMore {...restProps}>{children}</StyledButtonLoadMore>;
+  return (
+    <StyledButtonLoadMore data-testid="btn-load-more" {...restProps}>
+      {children}
+    </StyledButtonLoadMore>
+  );
 };
 
 export default ButtonLoadMore;

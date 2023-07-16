@@ -6,7 +6,7 @@ interface NoResultsFoundProps {
 }
 
 const NoResultsFound = ({
-  text = 'No results found.',
+  text = '結果が見つかりません。',
   colorText,
 }: NoResultsFoundProps) => (
   <Box data-testid="no-results" my="100px" textAlign="center">

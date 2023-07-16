@@ -1,6 +1,5 @@
 import {
   Grid,
-  Stack,
   Box,
   useTheme,
   styled,
@@ -8,20 +7,15 @@ import {
   Typography,
   typographyClasses,
 } from '@mui/material';
-import {PeriodType} from 'src/@types/models/bodyRecord';
-import {
-  DataLoading,
-  LineChart,
-  NoResultsFound,
-  WrapperBox,
-} from 'src/components';
-import {useBodyRecordQuery} from 'src/hooks/bodyRecord/useBodyRecordQueries';
-import useElementSize from 'src/hooks/common/useElementSize';
+import {DataLoading, NoResultsFound, WrapperBox} from 'src/components';
+import {useAnalysisQuery} from 'src/hooks/analysis/useAnalysisQueries';
+import {MM_SLASH_DD, formatDate} from 'src/utils/date';
+import BodyChart from 'src/charts/BodyChart';
 
 const StyledWrapperImage = styled(Box)(({theme}) => ({
   background: `url("/images/d01.jpg"), linear-gradient(255deg, ${theme.palette.primary[300]} 0%,  ${theme.palette.primary.main} 100%)`,
-  maxHeight: 448,
-  minHeight: 448,
+  maxHeight: 298,
+  minHeight: 298,
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center',
@@ -55,47 +49,49 @@ const StyledTypo = styled(Box)(({theme}) => ({
 }));
 
 const MyAnalysis = () => {
-  const [rootRef, {width}] = useElementSize();
   const theme = useTheme();
 
-  const {data: bodyRecords, isLoading} = useBodyRecordQuery({
-    periodType: PeriodType.YEAR,
+  const {data: myAnalysis, isLoading: isLoadingAnalysis} = useAnalysisQuery({
+    createdOn: '2022-05-21T00:00:00.000Z',
   });
 
   return (
     <Grid container>
       <Grid item xs={12} sm={5}>
         <StyledWrapperImage>
-          <StyledWrapperCircularProgress>
-            <CircularProgress
-              variant="determinate"
-              color="light"
-              value={75}
-              size={200}
-              thickness={1}
-            />
-            <StyledWrapperTypo>
-              <StyledTypo>
-                <Typography variant="p" mr={0.5}>
-                  05/21
-                </Typography>
-                <Typography variant="h4">75%</Typography>
-              </StyledTypo>
-            </StyledWrapperTypo>
-          </StyledWrapperCircularProgress>
+          <DataLoading isLoading={isLoadingAnalysis}>
+            {myAnalysis ? (
+              <StyledWrapperCircularProgress>
+                <CircularProgress
+                  variant="determinate"
+                  color="light"
+                  value={myAnalysis.value}
+                  size={200}
+                  thickness={1}
+                />
+                <StyledWrapperTypo>
+                  <StyledTypo>
+                    <Typography variant="p" mr={0.5}>
+                      {formatDate('2022-05-21T00:00:00.000Z', MM_SLASH_DD)}
+                    </Typography>
+                    <Typography variant="h4">{myAnalysis.value}%</Typography>
+                  </StyledTypo>
+                </StyledWrapperTypo>
+              </StyledWrapperCircularProgress>
+            ) : (
+              <NoResultsFound />
+            )}
+          </DataLoading>
         </StyledWrapperImage>
       </Grid>
       <Grid item xs={12} sm={7}>
-        <WrapperBox backgroundColor={theme.palette.dark?.[600]}>
-          <DataLoading isLoading={isLoading}>
-            {bodyRecords && bodyRecords.length > 0 ? (
-              <Stack width="100%" height="100%" ref={rootRef}>
-                <LineChart width={width} height={400} data={bodyRecords} />
-              </Stack>
-            ) : (
-              <NoResultsFound colorText={theme.palette.light?.main} />
-            )}
-          </DataLoading>
+        <WrapperBox
+          backgroundColor={theme.palette.dark?.[600]}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <BodyChart />
         </WrapperBox>
       </Grid>
     </Grid>

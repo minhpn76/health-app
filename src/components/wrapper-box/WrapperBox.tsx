@@ -1,10 +1,10 @@
-import {ForwardedRef, PropsWithChildren, forwardRef} from 'react';
-import {Box, styled} from '@mui/material';
+import {ForwardedRef, PropsWithChildren, ReactNode, forwardRef} from 'react';
+import {Box, styled, BoxProps} from '@mui/material';
 
 type WrapperBoxProps = {
   title?: React.ReactElement;
   backgroundColor?: string;
-};
+} & Omit<BoxProps, 'title'>;
 
 const StyledWrapperBox = styled(Box)<{backgroundColor?: string}>(
   ({theme, backgroundColor}) => ({
@@ -26,7 +26,12 @@ const StyledWrapperBoxTitle = styled(Box)(({theme}) => ({
 }));
 
 const WrapperBox = (
-  {title, backgroundColor, children}: PropsWithChildren<WrapperBoxProps>,
+  {
+    title,
+    backgroundColor,
+    children,
+    ...restProps
+  }: PropsWithChildren<WrapperBoxProps>,
   ref: ForwardedRef<HTMLDivElement>
 ) => {
   return (
@@ -34,6 +39,7 @@ const WrapperBox = (
       backgroundColor={backgroundColor}
       component="div"
       ref={ref}
+      {...restProps}
     >
       {title && <StyledWrapperBoxTitle>{title}</StyledWrapperBoxTitle>}
       <Box mt={2} flexGrow={1}>

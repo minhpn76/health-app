@@ -1,14 +1,8 @@
 import {useState} from 'react';
-import {Box, Typography, Button, styled, Stack, useTheme} from '@mui/material';
-import {
-  WrapperBox,
-  LineChart,
-  DataLoading,
-  NoResultsFound,
-} from 'src/components';
+import {Box, Typography, Button, styled} from '@mui/material';
+import {WrapperBox} from 'src/components';
 import {PeriodType} from 'src/@types/models/bodyRecord';
-import useElementSize from 'src/hooks/common/useElementSize';
-import {useBodyRecordQuery} from 'src/hooks/bodyRecord/useBodyRecordQueries';
+import BodyChart from 'src/charts/BodyChart';
 
 const StyledWrapperAction = styled(Box)(({theme}) => ({
   display: 'flex',
@@ -46,11 +40,7 @@ const actions = [
 ];
 
 const BodyRecords = () => {
-  const [rootRef, {width}] = useElementSize();
-  const theme = useTheme();
   const [periodType, setPeriodType] = useState<PeriodType>(PeriodType.YEAR);
-
-  const {data: bodyRecords, isLoading} = useBodyRecordQuery({periodType});
 
   return (
     <WrapperBox
@@ -64,15 +54,7 @@ const BodyRecords = () => {
         </>
       }
     >
-      <DataLoading isLoading={isLoading}>
-        {bodyRecords && bodyRecords.length > 0 ? (
-          <Stack width="100%" height="100%" ref={rootRef}>
-            <LineChart width={width} height={250} data={bodyRecords} />
-          </Stack>
-        ) : (
-          <NoResultsFound colorText={theme.palette.light?.main} />
-        )}
-      </DataLoading>
+      <BodyChart periodType={periodType} />
       <StyledWrapperAction mt={2}>
         {actions.map((ac, idx) => (
           <StyledAction

@@ -4,6 +4,7 @@ import {PaginableData} from 'src/@types/models/paginableData';
 import {MyDiaryEntity, MyDiaryPagedQuery} from 'src/@types/models/diary';
 import {MyExerciseQuery, MyExerciseEntity} from 'src/@types/models/exercise';
 import {BodyRecordEntity, BodyRecordQuery} from 'src/@types/models/bodyRecord';
+import {MyAnalysisEntity, MyAnalysisQuery} from 'src/@types/models/myAnalysis';
 
 export namespace myRecordApiClient {
   export const getMyDiary = async (params?: MyDiaryPagedQuery) => {
@@ -29,6 +30,16 @@ export namespace myRecordApiClient {
   export const getBodyRecords = async (params?: BodyRecordQuery) => {
     const response = await axios.get<BodyRecordEntity[]>(
       `${API_PATH}/body-records`,
+      {
+        params,
+      }
+    );
+    return response.data;
+  };
+
+  export const getMyAnalysis = async (params?: MyAnalysisQuery) => {
+    const response = await axios.get<MyAnalysisEntity>(
+      `${API_PATH}/my-analysis`,
       {
         params,
       }

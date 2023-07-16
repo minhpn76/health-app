@@ -46,7 +46,7 @@ const Recommend = () => {
     <Grid container spacing={4}>
       {recommendItems.map((recommend, idx) => (
         <Grid item xs={12} sm={6} md={3} key={idx}>
-          <StyledRecommendItem>
+          <StyledRecommendItem data-testid="recommend-item">
             <Typography variant="h5">{recommend.title}</Typography>
             <StyledLine />
             <Typography variant="p">{recommend.description}</Typography>

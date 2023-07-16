@@ -5,6 +5,7 @@ import {API_PATH, LOCAL_STORAGE_KEY, TIME_DELAY} from 'src/constants/common';
 import {myDiaryData} from './data/myDiaryData';
 import {myExerciseData} from './data/myExerciseData';
 import {bodyRecordsData} from './data/bodyRecordsData';
+import {myAnalysisData} from './data/myAnalysisData';
 
 export const myRecordsHandlers = [
   rest.get(`${API_PATH}/my-diary`, (req: any, res: any, ctx: any) => {
@@ -68,6 +69,23 @@ export const myRecordsHandlers = [
 
     return res(ctx.status(200), ctx.json(filteredData), ctx.delay(TIME_DELAY));
   }),
+
+  rest.get(`${API_PATH}/my-analysis`, (req: any, res: any, ctx: any) => {
+    const createdOn = req.url.searchParams.get('createdOn');
+
+    let data = JSON.parse(
+      localStorage.getItem(LOCAL_STORAGE_KEY.KEY_MY_ANALYSIS) || '{}'
+    );
+
+    let filteredData = data;
+    if (createdOn) {
+      filteredData = filteredData.find((i: any) =>
+        isEqual(new Date(createdOn), new Date(i.createdOn))
+      );
+    }
+
+    return res(ctx.status(200), ctx.json(filteredData), ctx.delay(TIME_DELAY));
+  }),
 ];
 
 if (!localStorage.getItem(LOCAL_STORAGE_KEY.KEY_MY_DIARY)) {
@@ -88,5 +106,12 @@ if (!localStorage.getItem(LOCAL_STORAGE_KEY.KEY_BODY_RECORD)) {
   localStorage.setItem(
     LOCAL_STORAGE_KEY.KEY_BODY_RECORD,
     JSON.stringify(bodyRecordsData)
+  );
+}
+
+if (!localStorage.getItem(LOCAL_STORAGE_KEY.KEY_MY_ANALYSIS)) {
+  localStorage.setItem(
+    LOCAL_STORAGE_KEY.KEY_MY_ANALYSIS,
+    JSON.stringify(myAnalysisData)
   );
 }
