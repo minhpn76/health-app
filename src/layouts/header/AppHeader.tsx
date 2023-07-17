@@ -48,7 +48,7 @@ const StyledTextLink = styled(ListItemText)<{active?: string}>(
   ({theme, active}) => ({
     '& span': {
       color: `${
-        active && Boolean(active)
+        active === 'true'
           ? theme.palette.primary.main
           : theme.palette.light?.main
       }`,

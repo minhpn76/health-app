@@ -1,4 +1,4 @@
-import {ForwardedRef, Fragment, forwardRef, useState} from 'react';
+import {useState} from 'react';
 import {Box, Typography, Button, styled} from '@mui/material';
 import {WrapperBox} from 'src/components';
 import {PeriodType} from 'src/@types/models/bodyRecord';
@@ -11,13 +11,9 @@ const StyledWrapperAction = styled(Box)(({theme}) => ({
 
 const StyledAction = styled(Button)<{active?: string}>(({theme, active}) => ({
   backgroundColor:
-    active && Boolean(active)
-      ? theme.palette.primary[300]
-      : theme.palette.light?.main,
+    active === 'true' ? theme.palette.primary[300] : theme.palette.light?.main,
   color:
-    active && Boolean(active)
-      ? theme.palette.light?.main
-      : theme.palette.primary[300],
+    active === 'true' ? theme.palette.light?.main : theme.palette.primary[300],
   borderRadius: theme.spacing(3),
   padding: '1px 2px',
 }));
