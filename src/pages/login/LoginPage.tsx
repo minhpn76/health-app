@@ -60,7 +60,6 @@ const LoginPage = () => {
             label="Username"
             name="username"
             control={control}
-            required
             fullWidth
             error={Boolean(errors?.username)}
             helperText={errors?.username?.message}
@@ -69,10 +68,10 @@ const LoginPage = () => {
             label="Password"
             name="password"
             control={control}
-            required
             fullWidth
             sx={{mt: 2}}
             type="password"
+            role="password"
             error={Boolean(errors?.password)}
             helperText={errors?.password?.message}
           />

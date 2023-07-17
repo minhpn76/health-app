@@ -9,18 +9,26 @@ export const renderWithRouterReactQuery = (ui: ReactElement) => {
     defaultOptions: {
       queries: {
         refetchOnWindowFocus: false,
+        useErrorBoundary: (error: any) => {
+          // Request is canceled if token expired (handled in axios-config request interceptor)
+          // Don't throw this error to error boundary
+          if (error?.message === 'canceled') return false;
+          return true;
+        },
+        retry: 0,
       },
     },
   });
   const history = createMemoryHistory();
+
   return {
-    ...render(
+    render: render(
       <QueryClientProvider client={queryClient}>
         <Router location={history.location} navigator={history}>
           {ui}
         </Router>
       </QueryClientProvider>
     ),
-    history,
+    history: history,
   };
 };
