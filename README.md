@@ -25,6 +25,8 @@ Library used:
 
 ## Environment
 
+Create file .env.development in root folder
+
 ```sh
 VITE_API_URI="http://localhost:3000"
 ```
