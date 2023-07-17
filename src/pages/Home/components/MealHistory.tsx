@@ -3,9 +3,12 @@ import {InfiniteData} from '@tanstack/react-query';
 import {Fragment} from 'react';
 import {MealHistoryEntity} from 'src/@types/models/meal';
 import {PaginableData} from 'src/@types/models/paginableData';
-import {DataLoading, NoResultsFound} from 'src/components';
-import ButtonLoadMore from 'src/components/button-load-more/ButtonLoadMore';
-import Picture from 'src/components/picture/Picture';
+import {
+  DataLoading,
+  NoResultsFound,
+  ButtonLoadMore,
+  Picture,
+} from 'src/components';
 import {formatDate, MM_DOT_DD} from 'src/utils/date';
 
 type MealHistoryProps = {

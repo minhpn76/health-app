@@ -3,9 +3,13 @@ import {InfiniteData} from '@tanstack/react-query';
 import {Fragment} from 'react';
 import {PaginableData} from 'src/@types/models/paginableData';
 import {PostEntity} from 'src/@types/models/posts';
-import {DataLoading, NoResultsFound} from 'src/components';
-import ButtonLoadMore from 'src/components/button-load-more/ButtonLoadMore';
-import Picture from 'src/components/picture/Picture';
+import {
+  DataLoading,
+  NoResultsFound,
+  Picture,
+  ButtonLoadMore,
+} from 'src/components';
+
 import {formatDate, formatTime} from 'src/utils/date';
 
 type PostsProps = {

@@ -6,9 +6,8 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import {LoginValues} from 'src/@types/view-models/auth';
-import FormTextField from 'src/components/form-control/FormTextField';
 import {useLogin} from 'src/hooks/auth/useAuthMutation';
-import ErrorSlate from 'src/components/error-slate/ErrorSlate';
+import {ErrorSlate, FormTextField} from 'src/components';
 import {hasToken} from 'src/utils/common';
 import * as urls from 'src/constants/urls';
 

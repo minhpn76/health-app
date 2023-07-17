@@ -1,7 +1,6 @@
 import {Box, Grid, Typography, styled} from '@mui/material';
 import {Fragment} from 'react';
-import {DataLoading, NoResultsFound} from 'src/components';
-import ButtonLoadMore from 'src/components/button-load-more/ButtonLoadMore';
+import {DataLoading, NoResultsFound, ButtonLoadMore} from 'src/components';
 import {useDiaryQuery} from 'src/hooks/diary/useDiaryQueries';
 import {HH_MM, YYYY_MM_DD, formatDate, formatTime} from 'src/utils/date';
 
