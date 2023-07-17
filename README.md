@@ -14,11 +14,16 @@ Library used:
 
 ## Features
 
+- Login Page
 - Home Page (My analysis, My Meal)
 - My Body Page (My exercise, My records, My diary)
 - Column Page (Recommend, Posts)
 
-## Envinroment
+## Unit test
+
+- Login Page
+
+## Environment
 
 ```sh
 VITE_API_URI="http://localhost:3000"
