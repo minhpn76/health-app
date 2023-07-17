@@ -1,3 +1,4 @@
+import {useState, MouseEvent} from 'react';
 import {
   Box,
   Container,
@@ -6,17 +7,24 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Popover,
+  buttonBaseClasses,
+  paperClasses,
   styled,
   svgIconClasses,
 } from '@mui/material';
 import {Link, useLocation} from 'react-router-dom';
 
-import MemoIcon from 'src/icons/Memo';
-import ChallengeIcon from 'src/icons/Challenge';
-import InfoIcon from 'src/icons/Info';
-import MenuIcon from 'src/icons/Menu';
+import {
+  Close as CloseIcon,
+  Menu as MenuIcon,
+  Challenge as ChallengeIcon,
+  Info as InfoIcon,
+  Memo as MemoIcon,
+} from 'src/icons';
 
 import * as urls from 'src/constants/urls';
+import MenuMobile from './MenuMobile';
 
 const StyledAppHeader = styled(Box)(({theme}) => ({
   display: 'flex',
@@ -36,15 +44,33 @@ const StyledMenu = styled(Box)(({theme}) => ({
   },
 }));
 
-const StyledTextLink = styled(ListItemText)<{isActive?: boolean}>(
-  ({theme, isActive}) => ({
+const StyledTextLink = styled(ListItemText)<{active?: string}>(
+  ({theme, active}) => ({
     '& span': {
       color: `${
-        isActive ? theme.palette.primary.main : theme.palette.light?.main
+        active && Boolean(active)
+          ? theme.palette.primary.main
+          : theme.palette.light?.main
       }`,
     },
   })
 );
+
+const StyledIconButton = styled(IconButton)(({theme}) => ({
+  backgroundColor: theme.palette.dark?.main,
+  borderRadius: 0,
+}));
+
+const StyledPopover = styled(Popover)(({theme}) => ({
+  [`& .${paperClasses.root}`]: {
+    backgroundColor: 'transparent',
+  },
+  [`& .${buttonBaseClasses.root}`]: {
+    '&:hover': {
+      backgroundColor: theme.palette.dark?.main,
+    },
+  },
+}));
 
 const menus = [
   {
@@ -62,6 +88,20 @@ const menus = [
 
 const AppHeader = () => {
   const location = useLocation();
+
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'menu-mobile-popover' : undefined;
+
   return (
     <StyledAppHeader>
       <Container maxWidth="lg">
@@ -82,16 +122,40 @@ const AppHeader = () => {
                 <ListItemButton key={idx} component={Link} to={menu.link}>
                   <ListItemIcon>{menu.icon}</ListItemIcon>
                   <StyledTextLink
-                    isActive={menu.link === location.pathname}
+                    active={menu.link === location.pathname ? 'true' : 'false'}
                     primary={menu.label}
                   />
                 </ListItemButton>
               ))}
             </Hidden>
             <Box component="div">
-              <IconButton>
+              <IconButton aria-describedby={id} onClick={handleClick}>
                 <MenuIcon viewBox="0 0 32 32" />
               </IconButton>
+              <Hidden mdUp>
+                <StyledPopover
+                  id={id}
+                  open={open}
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center',
+                  }}
+                >
+                  <Box
+                    sx={{
+                      position: 'relative',
+                      top: '0',
+                      left: '160px',
+                    }}
+                  >
+                    <StyledIconButton onClick={handleClose}>
+                      <CloseIcon viewBox="0 0 32 32" />
+                    </StyledIconButton>
+                  </Box>
+                  <MenuMobile />
+                </StyledPopover>
+              </Hidden>
             </Box>
           </StyledMenu>
         </Box>

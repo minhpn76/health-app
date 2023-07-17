@@ -1,7 +1,15 @@
 import {BaseEntity} from './baseEntities';
 import PagedQuery from './pagedQuery';
 
-export interface PostPagedQuery extends PagedQuery {}
+export enum PostType {
+  COLUMN = 'column',
+  DIET = 'diet',
+  BEAUTY = 'beauty',
+  HEALTH = 'health',
+}
+export interface PostPagedQuery extends PagedQuery {
+  postType?: PostType;
+}
 
 export interface PostEntity extends BaseEntity {
   title: string;

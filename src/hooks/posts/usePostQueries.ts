@@ -11,7 +11,8 @@ export const usePostsQuery = (query?: PostPagedQuery) => {
     listWithFilters({
       ...query,
     }),
-    ({pageParam = query?.pageNo}) => postsApiClient.get({pageNo: pageParam}),
+    ({pageParam = query?.pageNo}) =>
+      postsApiClient.get({pageNo: pageParam, postType: query?.postType}),
     {
       getNextPageParam: lastPage => {
         return !lastPage.last ? lastPage.data : undefined;

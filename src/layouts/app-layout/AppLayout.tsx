@@ -18,7 +18,7 @@ const StyledScrollToTop = styled(IconButton)(({theme}) => ({
   bottom: '200px',
   right: '50px',
   [`& .${svgIconClasses.root}`]: {
-    fontSize: theme.spacing(7),
+    fontSize: theme.spacing(6),
   },
 }));
 

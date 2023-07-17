@@ -1,12 +1,19 @@
 import {Box, Grid, Typography, styled} from '@mui/material';
+import {InfiniteData} from '@tanstack/react-query';
 import {Fragment} from 'react';
+import {PaginableData} from 'src/@types/models/paginableData';
+import {PostEntity} from 'src/@types/models/posts';
 import {DataLoading, NoResultsFound} from 'src/components';
 import ButtonLoadMore from 'src/components/button-load-more/ButtonLoadMore';
 import Picture from 'src/components/picture/Picture';
-import {usePostsQuery} from 'src/hooks/posts/usePostQueries';
 import {formatDate, formatTime} from 'src/utils/date';
 
-let pageNumber = 1;
+type PostsProps = {
+  isLoading: boolean;
+  data?: InfiniteData<PaginableData<PostEntity>>;
+  hasNextPage?: boolean;
+  onLoadMore: () => void;
+};
 
 const StyledWrapperPost = styled(Box)(({theme}) => ({
   marginBottom: theme.spacing(1),
@@ -20,7 +27,7 @@ const StyledTypography = styled(Typography)({
   WebkitBoxOrient: 'vertical',
 });
 
-const StyledTags = styled(Typography)(({theme}) => ({
+const StyledTags = styled(Box)(({theme}) => ({
   display: 'flex',
   gap: theme.spacing(1),
   '& p': {
@@ -28,26 +35,13 @@ const StyledTags = styled(Typography)(({theme}) => ({
   },
 }));
 
-const Posts = () => {
-  const {
-    data: posts,
-    isLoading,
-    isFetchingNextPage,
-    fetchNextPage,
-    hasNextPage,
-  } = usePostsQuery();
-
-  const handleLoadMore = async () => {
-    pageNumber += 1;
-    await fetchNextPage({pageParam: pageNumber});
-  };
-
+const Posts = ({isLoading, data, hasNextPage, onLoadMore}: PostsProps) => {
   return (
-    <DataLoading isLoading={isLoading || isFetchingNextPage}>
+    <DataLoading isLoading={isLoading}>
       <Grid container spacing={2}>
-        {posts && posts.pages.length > 0 ? (
+        {data && data.pages.length > 0 ? (
           <>
-            {posts.pages.map((group, idx) => (
+            {data.pages.map((group, idx) => (
               <Fragment key={idx}>
                 {group.data.map(p => {
                   let dateTimeText = '';
@@ -105,7 +99,7 @@ const Posts = () => {
                   justifyContent="center"
                   mt={4}
                 >
-                  <ButtonLoadMore onClick={handleLoadMore} />
+                  <ButtonLoadMore onClick={onLoadMore} />
                 </Box>
               </Grid>
             )}

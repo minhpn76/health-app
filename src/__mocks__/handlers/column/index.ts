@@ -6,6 +6,7 @@ export const columnHandlers = [
   rest.get(`${API_PATH}/posts`, (req: any, res: any, ctx: any) => {
     let pageNumber = req.url.searchParams.get('pageNo');
     const pageSize = req.url.searchParams.get('pageSize') || 8;
+    const postType = req.url.searchParams.get('postType');
 
     let data = JSON.parse(
       localStorage.getItem(LOCAL_STORAGE_KEY.KEY_POSTS) || '{}'
@@ -13,6 +14,10 @@ export const columnHandlers = [
 
     if (!pageNumber || isNaN(pageNumber) || pageNumber <= 0) pageNumber = 1;
     let filteredData = data;
+
+    if (postType) {
+      filteredData = filteredData.filter((i: any) => i.type === postType);
+    }
 
     const totalRecords = filteredData.length;
     const totalPage =

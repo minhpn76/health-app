@@ -59,7 +59,7 @@ const MyExercise = () => {
     <WrapperBox
       title={
         <>
-          <Typography variant="small" marginRight={3}>
+          <Typography component="div" variant="small" marginRight={3}>
             MY
             <Typography variant="small">EXERCISE</Typography>
           </Typography>
@@ -72,7 +72,7 @@ const MyExercise = () => {
           {exercises && exercises.length > 0 ? (
             <>
               {exercises.map(ex => (
-                <Grid item xs={6} key={ex.id}>
+                <Grid item xs={12} sm={6} key={ex.id}>
                   <StyledExerciseItem>
                     <Box>
                       <StyledDot>●</StyledDot>

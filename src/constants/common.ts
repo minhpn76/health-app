@@ -12,6 +12,6 @@ export const LOCAL_STORAGE_KEY = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-export const API_PATH = `${import.meta.env.VITE_APP_URI || ''}/api/v1`;
+export const API_PATH = `${import.meta.env.VITE_API_URI || ''}/api/v1`;
 
-export const TIME_DELAY = 3000;
+export const TIME_DELAY = 0;

@@ -52,6 +52,7 @@ export const myExerciseData = [
     id: 8,
     activity: '家事全般（立位・軽い）',
     energyConsumption: '26kcal',
+    activityTime: '10 min',
     createdOn: '2022-05-21T00:00:00.000Z',
   },
   {

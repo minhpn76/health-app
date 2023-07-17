@@ -1,4 +1,9 @@
 import {Box, Grid, Typography, styled} from '@mui/material';
+import {PostType} from 'src/@types/models/posts';
+
+type RecommendProps = {
+  onChangePostType: (postType: PostType) => void;
+};
 
 const StyledRecommendItem = styled(Box)(({theme}) => ({
   backgroundColor: theme.palette.dark?.[600],
@@ -26,27 +31,34 @@ const recommendItems = [
   {
     title: 'RECOMMENDED COLUMN',
     description: 'オススメ',
+    type: PostType.COLUMN,
   },
   {
     title: 'RECOMMENDED DIET',
     description: 'ダイエット',
+    type: PostType.DIET,
   },
   {
     title: 'RECOMMENDED BEAUTY',
     description: '美容',
+    type: PostType.BEAUTY,
   },
   {
     title: 'RECOMMENDED HEALTH',
     description: '健康',
+    type: PostType.HEALTH,
   },
 ];
 
-const Recommend = () => {
+const Recommend = ({onChangePostType}: RecommendProps) => {
   return (
     <Grid container spacing={4}>
       {recommendItems.map((recommend, idx) => (
         <Grid item xs={12} sm={6} md={3} key={idx}>
-          <StyledRecommendItem data-testid="recommend-item">
+          <StyledRecommendItem
+            data-testid="recommend-item"
+            onClick={() => onChangePostType(recommend.type)}
+          >
             <Typography variant="h5">{recommend.title}</Typography>
             <StyledLine />
             <Typography variant="p">{recommend.description}</Typography>
