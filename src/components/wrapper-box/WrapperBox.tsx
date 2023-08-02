@@ -37,7 +37,6 @@ const WrapperBox = (
   return (
     <StyledWrapperBox
       backgroundColor={backgroundColor}
-      component="div"
       ref={ref}
       {...restProps}
     >
