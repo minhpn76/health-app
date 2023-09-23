@@ -57,19 +57,19 @@ const entries = [
   {
     image: MyRecommend1Image,
     title: 'BODY RECORD',
-    subTitle: '自分のカラダの記録',
+    subTitle: 'Record of my body',
     elementType: ElementType.BODY_RECORD,
   },
   {
     image: MyRecommend2Image,
     title: 'MY EXERCISE',
-    subTitle: '自分の運動の記録',
+    subTitle: 'Record your own exercise',
     elementType: ElementType.MY_EXERCISE,
   },
   {
     image: MyRecommend3Image,
     title: 'MY DIARY',
-    subTitle: '自分の日記',
+    subTitle: 'My diary',
     elementType: ElementType.MY_DIARY,
   },
 ];

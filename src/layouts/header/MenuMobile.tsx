@@ -16,27 +16,27 @@ const StyledList = styled(List)(({theme}) => ({
 
 const menus = [
   {
-    label: '自分の記録',
+    label: 'My records',
     link: urls.MY_RECORD,
   },
   {
-    label: '体重グラフ',
+    label: 'My graph',
     link: '#',
   },
   {
-    label: '目標',
+    label: 'Target',
     link: '#',
   },
   {
-    label: '選択中のコース',
+    label: 'Course',
     link: '#',
   },
   {
-    label: 'コラム一覧',
+    label: 'Column list',
     link: urls.COLUMN,
   },
   {
-    label: '設定',
+    label: 'Settings',
     link: '#',
   },
 ];
