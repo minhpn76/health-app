@@ -18,27 +18,27 @@ const StyledFooterContainer = styled(Container)({
 
 const footerItems = [
   {
-    text: '会員登録',
+    text: 'Registration',
     link: '#',
   },
   {
-    text: '運営会社',
+    text: 'Company',
     link: '#',
   },
   {
-    text: '利用規約',
+    text: 'Term of service',
     link: '#',
   },
   {
-    text: '個人情報の取扱について',
+    text: 'Personal information',
     link: '#',
   },
   {
-    text: '特定商取引法に基づく表記',
+    text: 'SCTL',
     link: '#',
   },
   {
-    text: 'お問い合わせ',
+    text: 'Inquiry',
     link: '#',
   },
 ];

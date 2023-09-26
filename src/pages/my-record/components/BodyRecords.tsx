@@ -29,7 +29,7 @@ const actions = [
   },
   {
     type: PeriodType.MONTH,
-    label: '月',
+    label: 'm',
   },
   {
     type: PeriodType.YEAR,

@@ -75,15 +75,15 @@ const StyledPopover = styled(Popover)(({theme}) => ({
 const menus = [
   {
     icon: <MemoIcon viewBox="0 0 32 32" />,
-    label: '自分の記録',
+    label: 'My records',
     link: urls.MY_RECORD,
   },
   {
     icon: <ChallengeIcon viewBox="0 0 32 32" />,
-    label: 'チャレンジ',
+    label: 'Challenge',
     link: '#',
   },
-  {icon: <InfoIcon viewBox="0 0 32 32" />, label: 'お知らせ', link: '#'},
+  {icon: <InfoIcon viewBox="0 0 32 32" />, label: 'Notice', link: '#'},
 ];
 
 const AppHeader = () => {
