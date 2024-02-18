@@ -1,1 +1,3 @@
-export const useResize = () => {};
+export const useResize = () => {
+  const a = 1;
+};
